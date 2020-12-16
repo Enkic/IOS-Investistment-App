@@ -15,9 +15,9 @@ final class PortfolioWireframe: BaseWireframe {
     // MARK: - Private properties -
 
     // MARK: - Module setup -
+    let moduleViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "Portfolio") as! PortfolioViewController
 
     init() {
-        let moduleViewController = PortfolioViewController()
         super.init(viewController: moduleViewController)
 
         let interactor = PortfolioInteractor()

@@ -22,6 +22,10 @@ final class PortfolioViewController: UIViewController {
         super.viewDidLoad()
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        print("showing portfolio")
+    }
+
 }
 
 // MARK: - Extensions -

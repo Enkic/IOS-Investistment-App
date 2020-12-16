@@ -15,9 +15,9 @@ final class MarketsWireframe: BaseWireframe {
     // MARK: - Private properties -
 
     // MARK: - Module setup -
+    let moduleViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "Markets") as! MarketsViewController
 
     init() {
-        let moduleViewController = MarketsViewController()
         super.init(viewController: moduleViewController)
 
         let interactor = MarketsInteractor()

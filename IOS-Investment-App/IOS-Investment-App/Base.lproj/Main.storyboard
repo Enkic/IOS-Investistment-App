@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="iln-QL-Lhv">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -14,7 +15,7 @@
         <scene sceneID="YMg-Ym-tgt">
             <objects>
                 <viewController storyboardIdentifier="Markets" id="JcQ-fS-ZrV" customClass="MarketsViewController" customModule="IOS_Investment_App" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="oDO-Ja-cBc" customClass="MarketsViewUI" customModule="IOS_Investment_App" customModuleProvider="target">
+                    <view key="view" contentMode="scaleToFill" id="oDO-Ja-cBc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -110,7 +111,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="184-tN-xYn" customClass="DesignableView" customModule="IOS_Investment_App" customModuleProvider="target">
-                                <rect key="frame" x="30" y="515.5" width="354" height="267.5"/>
+                                <rect key="frame" x="30" y="515.5" width="354" height="316.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sell" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tn1-1n-zVu">
                                         <rect key="frame" x="12" y="12" width="37" height="27"/>
@@ -119,7 +120,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="0J3-PH-Wgs">
-                                        <rect key="frame" x="8" y="45" width="338" height="214.5"/>
+                                        <rect key="frame" x="8" y="45" width="338" height="263.5"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="8At-79-goP">
@@ -208,7 +209,9 @@
                             <constraint firstItem="VCh-3m-iEM" firstAttribute="leading" secondItem="1Wb-De-Ta1" secondAttribute="leading" constant="30" id="hHk-Pd-oLL"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" selectedImage="chart.bar" catalog="system" id="pvP-wV-hd2"/>
+                    <tabBarItem key="tabBarItem" title="" id="pvP-wV-hd2">
+                        <imageReference key="image" image="chart.bar" catalog="system" symbolScale="large"/>
+                    </tabBarItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UAP-ff-FHr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -218,7 +221,7 @@
         <scene sceneID="ohy-bu-Ay9">
             <objects>
                 <viewController storyboardIdentifier="Buy" id="zGm-Ww-V6a" customClass="BuyView" customModule="IOS_Investment_App" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="WkM-oJ-w9v" customClass="BuyViewUI" customModule="IOS_Investment_App" customModuleProvider="target">
+                    <view key="view" contentMode="scaleToFill" id="WkM-oJ-w9v">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -312,8 +315,9 @@
         <!--Portfolio View Controller-->
         <scene sceneID="Slm-23-hGK">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dhO-ea-Phd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="Portfolio" id="iVh-7J-dqI" customClass="PortfolioViewController" customModule="IOS_Investment_App" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="qfa-cQ-aFq" customClass="PortfolioViewUI" customModule="IOS_Investment_App" customModuleProvider="target">
+                    <view key="view" contentMode="scaleToFill" id="qfa-cQ-aFq">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -421,10 +425,10 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wg3-Ox-VQr" customClass="DesignableView" customModule="IOS_Investment_App" customModuleProvider="target">
-                                <rect key="frame" x="30" y="585" width="354" height="198"/>
+                                <rect key="frame" x="30" y="585" width="354" height="247"/>
                                 <subviews>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="I8Y-27-kcu">
-                                        <rect key="frame" x="8" y="47" width="338" height="143"/>
+                                        <rect key="frame" x="8" y="47" width="338" height="192"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="LhV-pA-dWD">
                                             <size key="itemSize" width="128" height="128"/>
@@ -534,35 +538,18 @@
                             <constraint firstItem="9tC-59-BJg" firstAttribute="leading" secondItem="cAJ-DQ-1rx" secondAttribute="leading" constant="30" id="rAY-XA-o3d"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" selectedImage="person" catalog="system" id="MrK-Kk-iqk"/>
+                    <tabBarItem key="tabBarItem" title="" id="MrK-Kk-iqk">
+                        <imageReference key="image" image="person" catalog="system" symbolScale="large"/>
+                    </tabBarItem>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dhO-ea-Phd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1039" y="-594"/>
-        </scene>
-        <!--Tab Bar Controller-->
-        <scene sceneID="YjB-hI-lNs">
-            <objects>
-                <tabBarController storyboardIdentifier="Home" id="iln-QL-Lhv" sceneMemberID="viewController">
-                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="wKO-za-u62">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </tabBar>
-                    <connections>
-                        <segue destination="iVh-7J-dqI" kind="relationship" relationship="viewControllers" id="XzH-Px-NMN"/>
-                        <segue destination="JcQ-fS-ZrV" kind="relationship" relationship="viewControllers" id="4tE-al-2mk"/>
-                    </connections>
-                </tabBarController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="SNT-rW-hwV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="123" y="-48"/>
+            <point key="canvasLocation" x="1038" y="-463"/>
         </scene>
         <!--Sell View-->
         <scene sceneID="Wy6-rF-pn5">
             <objects>
                 <viewController storyboardIdentifier="Sell" id="x36-JE-eh0" customClass="SellView" customModule="IOS_Investment_App" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Z7s-Fs-tw5" customClass="SellViewUI" customModule="IOS_Investment_App" customModuleProvider="target">
+                    <view key="view" contentMode="scaleToFill" id="Z7s-Fs-tw5">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>

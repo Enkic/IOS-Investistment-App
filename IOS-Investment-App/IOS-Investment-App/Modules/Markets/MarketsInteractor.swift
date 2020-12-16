@@ -9,7 +9,7 @@
 //
 
 import Foundation
-import CryptoCurrencyKit
+import Coinpaprika
 
 final class MarketsInteractor {
 }
@@ -19,17 +19,23 @@ final class MarketsInteractor {
 extension MarketsInteractor: MarketsInteractorInterface {
     
     func fetchCryptos() {
-            CryptoCurrencyKit.fetchGlobal(convert: .hkd) { r in
-            switch r {
-            case .success(let global):
-                print(global)
-//                didFetchCryptos(cryptos: g)
-            case .failure(let error):
-                print(error)
+        
+        Coinpaprika.API.tickers(quotes: [.usd, .btc]).perform { (response) in
+            switch (response) {
+            case .success(let coins):
+                print("Some coins: ")
+                print(coins[0].name, ": ", coins[0])
+                print(coins[1].name, ": ", coins[1])
+                print(coins[2].name, ": ", coins[2])
+
+            case .failure(let err):
+                print("Api error:", err)
+            
             }
+        
         }
+        
     }
-    
 }
 
 extension MarketsInteractor: MarketsInteractorOutputInterface {

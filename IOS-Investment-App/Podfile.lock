@@ -1,0 +1,24 @@
+PODS:
+  - CoinpaprikaAPI (2.2):
+    - CoinpaprikaAPI/Client (= 2.2)
+  - CoinpaprikaAPI/Client (2.2):
+    - CoinpaprikaAPI/Networking
+  - CoinpaprikaAPI/Networking (2.2)
+  - lottie-ios (3.1.9)
+
+DEPENDENCIES:
+  - CoinpaprikaAPI
+  - lottie-ios (~> 3.1.8)
+
+SPEC REPOS:
+  trunk:
+    - CoinpaprikaAPI
+    - lottie-ios
+
+SPEC CHECKSUMS:
+  CoinpaprikaAPI: 30093dd2ece7d8ecea8c0d8671f704e7a6095f0b
+  lottie-ios: 3a3758ef5a008e762faec9c9d50a39842f26d124
+
+PODFILE CHECKSUM: 0d45c4aa1717a23f181e51404097eb8b2b868191
+
+COCOAPODS: 1.9.3

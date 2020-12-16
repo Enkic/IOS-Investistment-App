@@ -20,8 +20,12 @@ final class MarketsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+                
         presenter.didLoad()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        print("showing markets")
     }
 
 }
