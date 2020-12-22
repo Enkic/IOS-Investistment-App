@@ -9,11 +9,71 @@
 //
 
 import Foundation
+import Coinpaprika
 
 final class PortfolioInteractor {
+    var presenter: PortfolioPresenterInterface!
+    
+    let iconesUrl = "https://cryptoicons.org/api/icon/"
+    let iconeSizeUrl = "/32"
+
+    func getCryptoIcon(coinSymbol: String) -> Data? {
+
+        let url = iconesUrl + coinSymbol.lowercased() + iconeSizeUrl
+        guard let urlEncoded = URL(string: url) else { return nil }
+        guard let imageData = try? Data(contentsOf: urlEncoded) else { return nil }
+        
+        return imageData
+    }
+    
 }
 
 // MARK: - Extensions -
 
 extension PortfolioInteractor: PortfolioInteractorInterface {
+    
+    func getBoughtCoinsInfosFromApi(storeCoins: @escaping (_ coins: [CoinBoughtEntity]) -> Void) {
+        var coinsBought = Storage.getBoughtCoins()
+        
+        if coinsBought.count == 0 {
+            storeCoins(coinsBought)
+        }
+                
+        for i in 0..<coinsBought.count {
+            Coinpaprika.API.ticker(id: coinsBought[i].id, quotes: [.usd]).perform { (response) in
+                switch response {
+                  case .success(let ticker):
+                    let coinAmountValue = Float(truncating: (Decimal(coinsBought[i].usdAmount)) / ticker[.usd].price as NSNumber)
+                    let coinDiff = coinAmountValue - coinsBought[i].amount
+                    let coinDiffUsd = coinDiff * Float(truncating: 1 / ticker[.usd].price as NSNumber)
+                    
+                    coinsBought[i].symbol = ticker.symbol
+                    coinsBought[i].profits = coinDiffUsd
+//                    coinsBought[i].iconData = self.getCryptoIcon(coinSymbol: coinsBought[i].symbol!)
+                    
+                    // Tmp update the view each time we get a new coin infos
+                    storeCoins(coinsBought)
+                    case .failure(_):
+                    break
+                }
+            }
+        }
+    }
+    
+    func getTransactions() {
+        let transactions = Storage.getTransations()
+        
+        presenter.didGetTransactions(transactions: transactions)
+    }
+    
+    func storeMoneyWallet(add amount: Int) {
+        Storage.addMoneyToWallet(amount: amount)
+        
+        presenter.storeMoneyWalletCallback(success: true, walletBalance: Storage.getMoneyFromWallet())
+    }
+    
+    func getMoneyWallet() -> Int {
+        return Storage.getMoneyFromWallet()
+    }
+    
 }

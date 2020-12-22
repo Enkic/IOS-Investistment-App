@@ -1,4 +1,8 @@
 PODS:
+  - Alamofire (5.0.0.beta.1)
+  - Charts (3.6.0):
+    - Charts/Core (= 3.6.0)
+  - Charts/Core (3.6.0)
   - CoinpaprikaAPI (2.2):
     - CoinpaprikaAPI/Client (= 2.2)
   - CoinpaprikaAPI/Client (2.2):
@@ -7,18 +11,33 @@ PODS:
   - lottie-ios (3.1.9)
 
 DEPENDENCIES:
+  - Alamofire (from `https://github.com/Alamofire/Alamofire.git`, branch `alamofire5`)
+  - Charts
   - CoinpaprikaAPI
   - lottie-ios (~> 3.1.8)
 
 SPEC REPOS:
   trunk:
+    - Charts
     - CoinpaprikaAPI
     - lottie-ios
 
+EXTERNAL SOURCES:
+  Alamofire:
+    :branch: alamofire5
+    :git: https://github.com/Alamofire/Alamofire.git
+
+CHECKOUT OPTIONS:
+  Alamofire:
+    :commit: 2c99a6691dac40f03ef9f9e89aaf2eb751843393
+    :git: https://github.com/Alamofire/Alamofire.git
+
 SPEC CHECKSUMS:
+  Alamofire: 2ef6d6c984c5d21c366e9b41a9ae7dfee2b67a44
+  Charts: b1e3a1f5a1c9ba5394438ca3b91bd8c9076310af
   CoinpaprikaAPI: 30093dd2ece7d8ecea8c0d8671f704e7a6095f0b
   lottie-ios: 3a3758ef5a008e762faec9c9d50a39842f26d124
 
-PODFILE CHECKSUM: 0d45c4aa1717a23f181e51404097eb8b2b868191
+PODFILE CHECKSUM: 8ee268ea0934391f5957114c5fbbaeb9007a5d66
 
 COCOAPODS: 1.9.3

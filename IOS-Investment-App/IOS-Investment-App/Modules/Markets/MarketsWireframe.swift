@@ -22,6 +22,7 @@ final class MarketsWireframe: BaseWireframe {
 
         let interactor = MarketsInteractor()
         let presenter = MarketsPresenter(view: moduleViewController, interactor: interactor, wireframe: self)
+        
         moduleViewController.presenter = presenter
     }
 
@@ -30,4 +31,26 @@ final class MarketsWireframe: BaseWireframe {
 // MARK: - Extensions -
 
 extension MarketsWireframe: MarketsWireframeInterface {
+    
+    func navigate(to option: MarketsNavigationOption, coinId: String) {
+        
+        switch option {
+        case .buyCoins:
+            openBuyCoins(coinId: coinId)
+            break
+        case .sellCoins:
+            openSellCoins(coinId: coinId)
+            break
+        }
+                
+    }
+    
+    private func openBuyCoins(coinId: String) {
+        navigationController?.pushWireframe(BuyCoinsWireframe(coinId: coinId))
+    }
+
+    private func openSellCoins(coinId: String) {
+        navigationController?.pushWireframe(SellCoinsWireframe(coinId: coinId))
+    }
+    
 }

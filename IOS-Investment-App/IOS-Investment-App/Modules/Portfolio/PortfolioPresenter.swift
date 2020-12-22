@@ -30,4 +30,40 @@ final class PortfolioPresenter {
 // MARK: - Extensions -
 
 extension PortfolioPresenter: PortfolioPresenterInterface {
+    
+    func getBoughtCoinsInfos() {
+        interactor.getBoughtCoinsInfosFromApi(storeCoins: didGetBoughtCoinsInfos(coins:))
+    }
+    
+    func getTransactions() {
+        interactor.getTransactions()
+    }
+    
+    func didGetBoughtCoinsInfos(coins: [CoinBoughtEntity]) {
+        view.updateCoinsView(coins: coins)
+    }
+    
+    func didGetTransactions(transactions: [TransactionEntity]) {
+        view.updateTransactionsView(transactions: transactions)
+    }
+    
+
+    func storeMoneyWallet(add amount: String) {
+        if Int(amount) != nil && Int(amount)! > 0 {
+            interactor.storeMoneyWallet(add: Int(amount)!)
+        } else {
+            view.storeMoneyWalletCallback(success: false, walletBalance: 0)
+        }
+    }
+    
+    func storeMoneyWalletCallback(success: Bool, walletBalance: Int) {
+        view.storeMoneyWalletCallback(success: success, walletBalance: walletBalance)
+    }
+    
+    func getMoneyWallet() -> String {
+        return String(interactor.getMoneyWallet())
+    }
+    
+    
+    
 }

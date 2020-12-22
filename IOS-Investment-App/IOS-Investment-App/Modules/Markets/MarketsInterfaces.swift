@@ -10,27 +10,43 @@
 
 import UIKit
 
+enum MarketsNavigationOption {
+    
+    case buyCoins
+    case sellCoins
+    
+}
+
 protocol MarketsWireframeInterface: WireframeInterface {
+    
+    func navigate(to option: MarketsNavigationOption, coinId: String)
+    
 }
 
 protocol MarketsViewInterface: ViewInterface {
+    
+    func updateCoins(coins: [CoinEntity])
+    func updateBoughtCoins(coins: [CoinBoughtEntity])
+    
 }
 
 protocol MarketsPresenterInterface: PresenterInterface {
-    
-    func didLoad()
-    
+    // Input
+    func fetchBoughtCoins()
+    func fetchCryptos()
+    func didTapBuyCoin(with id: String)
+    func didTapSellCoin(with id: String)
+
+    //Output
+    func didFetchBoughtCoins(coins: [CoinBoughtEntity])
+    func didfetchCryptos(_ coins: [CoinEntity])
 }
 
 protocol MarketsInteractorInterface: InteractorInterface {
     
-    func fetchCryptos()
-    
-}
-
-protocol MarketsInteractorOutputInterface: InteractorInterface {
-    
-    func didFetchCryptos(cryptos: [CryptoEntity])
+    func getCryptoIcon(coinSymbol: String) -> Data?
+    func fetchBoughtCoins(storeCoins: @escaping (_ coins: [CoinBoughtEntity]) -> Void)
+    func fetchCryptos(storeCoins: @escaping (_ coins: [CoinEntity]) -> Void, maxRange: Int)
     
 }
 

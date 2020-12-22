@@ -1,3 +1,5 @@
 ${PODS_ROOT}/Target Support Files/Pods-IOS-Investment-App/Pods-IOS-Investment-App-frameworks.sh
+${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework
+${BUILT_PRODUCTS_DIR}/Charts/Charts.framework
 ${BUILT_PRODUCTS_DIR}/CoinpaprikaAPI/Coinpaprika.framework
 ${BUILT_PRODUCTS_DIR}/lottie-ios/Lottie.framework

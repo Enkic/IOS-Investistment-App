@@ -14,11 +14,28 @@ protocol PortfolioWireframeInterface: WireframeInterface {
 }
 
 protocol PortfolioViewInterface: ViewInterface {
+    func storeMoneyWalletCallback(success: Bool, walletBalance: Int)
+    
+    func updateCoinsView(coins: [CoinBoughtEntity])
+    func updateTransactionsView(transactions: [TransactionEntity])
 }
 
 protocol PortfolioPresenterInterface: PresenterInterface {
+    //Input
+    func storeMoneyWallet(add amount: String)
+    func getMoneyWallet() -> String
+    func getBoughtCoinsInfos()
+    func getTransactions()
+
+    //Ouput
+    func didGetBoughtCoinsInfos(coins: [CoinBoughtEntity])
+    func didGetTransactions(transactions: [TransactionEntity])
+    func storeMoneyWalletCallback(success: Bool, walletBalance: Int)
 }
 
 protocol PortfolioInteractorInterface: InteractorInterface {
-    
+    func storeMoneyWallet(add amount: Int)
+    func getMoneyWallet() -> Int
+    func getBoughtCoinsInfosFromApi(storeCoins: @escaping (_ coins: [CoinBoughtEntity]) -> Void)
+    func getTransactions()
 }

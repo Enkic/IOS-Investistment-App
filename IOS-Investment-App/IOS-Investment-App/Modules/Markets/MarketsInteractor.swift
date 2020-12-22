@@ -9,39 +9,98 @@
 //
 
 import Foundation
+import UIKit
 import Coinpaprika
+import Alamofire
 
 final class MarketsInteractor {
+    
+    var presenter: MarketsPresenterInterface!
+
+    let iconesUrl = "https://cryptoicons.org/api/icon/"
+    let iconeSizeUrl = "/32"
+
+    var coins: [CoinEntity]!
+    
+    func getCryptoIcon(cryptoName: String) -> Data? {
+
+        let url = iconesUrl + cryptoName.lowercased() + iconeSizeUrl
+        guard let urlEncoded = URL(string: url) else { return nil }
+        guard let imageData = try? Data(contentsOf: urlEncoded) else { return nil }
+        
+        return imageData
+    }
+    
+    func castCoinsToCoinsEntity(coins: [Ticker], maxRange: Int) -> [CoinEntity] {
+        var coinsCopy: [CoinEntity] = []
+        
+        for (i, coin) in coins.enumerated() {
+            guard i < maxRange else { return coinsCopy }
+            
+            coinsCopy.append(CoinEntity())
+            coinsCopy[i].name = coin.name
+            coinsCopy[i].symbol = coin.symbol
+            coinsCopy[i].usdPrice = Float(truncating: coin[.usd].price as NSNumber)
+//            coinsCopy[i].iconData = getCryptoIcon(cryptoName: coin.symbol)
+            coinsCopy[i].id = coin.id
+        }
+                
+        return coinsCopy
+    }
+    
 }
 
 // MARK: - Extensions -
 
 extension MarketsInteractor: MarketsInteractorInterface {
     
-    func fetchCryptos() {
+    func getCryptoIcon(coinSymbol: String) -> Data? {
         
-        Coinpaprika.API.tickers(quotes: [.usd, .btc]).perform { (response) in
+        return getCryptoIcon(cryptoName: coinSymbol)
+    }
+    
+    func fetchBoughtCoins(storeCoins: @escaping ([CoinBoughtEntity]) -> Void) {
+        var coinsBought = Storage.getBoughtCoins()
+        
+        if coinsBought.count == 0 {
+            storeCoins(coinsBought)
+        }
+                
+        for i in 0..<coinsBought.count {
+            Coinpaprika.API.ticker(id: coinsBought[i].id, quotes: [.usd]).perform { (response) in
+                switch response {
+                  case .success(let ticker):
+                    let coinAmountValue = Float(truncating: (Decimal(coinsBought[i].usdAmount)) / ticker[.usd].price as NSNumber)
+                    let coinDiff = coinAmountValue - coinsBought[i].amount
+                    let coinDiffUsd = coinDiff * Float(truncating: 1 / ticker[.usd].price as NSNumber)
+                    
+                    coinsBought[i].symbol = ticker.symbol
+                    coinsBought[i].profits = coinDiffUsd
+//                    coinsBought[i].iconData = self.getCryptoIcon(coinSymbol: coinsBought[i].symbol!)
+                    
+                    // Tmp update the view each time we get a new coin infos
+                    storeCoins(coinsBought)
+                    case .failure(_):
+                    break
+                }
+            }
+        }
+    }
+    
+    func fetchCryptos(storeCoins: @escaping ([CoinEntity]) -> Void, maxRange: Int) {
+        
+        self.coins = []
+        
+        Coinpaprika.API.tickers(quotes: [.usd]).perform { (response) in
             switch (response) {
-            case .success(let coins):
-                print("Some coins: ")
-                print(coins[0].name, ": ", coins[0])
-                print(coins[1].name, ": ", coins[1])
-                print(coins[2].name, ": ", coins[2])
-
+            case .success(let coinsResponse):
+                let coinCasted = self.castCoinsToCoinsEntity(coins: coinsResponse, maxRange: maxRange)
+                storeCoins(coinCasted)
             case .failure(let err):
                 print("Api error:", err)
-            
             }
-        
         }
         
     }
 }
 
-extension MarketsInteractor: MarketsInteractorOutputInterface {
-    
-    func didFetchCryptos(cryptos: [CryptoEntity]) {
-        
-    }
-    
-}

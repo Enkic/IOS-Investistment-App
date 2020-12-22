@@ -1,0 +1,108 @@
+
+/* Class = "UILabel"; text = "Amount Bought"; ObjectID = "3Jh-cw-RGT"; */
+"3Jh-cw-RGT.text" = "Amount Bought";
+
+/* Class = "UILabel"; text = "BTC"; ObjectID = "4OZ-6t-dOZ"; */
+"4OZ-6t-dOZ.text" = "NaN";
+
+/* Class = "UILabel"; text = "BTC"; ObjectID = "5tP-tP-YWO"; */
+"5tP-tP-YWO.text" = "NaN";
+
+/* Class = "UISegmentedControl"; 8Pb-xE-cpU.segmentTitles[0] = "1 Hour"; ObjectID = "8Pb-xE-cpU"; */
+"8Pb-xE-cpU.segmentTitles[0]" = "1 Hour";
+
+/* Class = "UISegmentedControl"; 8Pb-xE-cpU.segmentTitles[1] = "1 Day"; ObjectID = "8Pb-xE-cpU"; */
+"8Pb-xE-cpU.segmentTitles[1]" = "1 Day";
+
+/* Class = "UISegmentedControl"; 8Pb-xE-cpU.segmentTitles[2] = "1 Week"; ObjectID = "8Pb-xE-cpU"; */
+"8Pb-xE-cpU.segmentTitles[2]" = "1 Week";
+
+/* Class = "UISegmentedControl"; 8Pb-xE-cpU.segmentTitles[3] = "All"; ObjectID = "8Pb-xE-cpU"; */
+"8Pb-xE-cpU.segmentTitles[3]" = "All";
+
+/* Class = "UILabel"; text = "Transactions"; ObjectID = "Axv-F1-JAX"; */
+"Axv-F1-JAX.text" = "Transactions";
+
+/* Class = "UIButton"; normalTitle = "BUY"; ObjectID = "IZo-gy-5db"; */
+"IZo-gy-5db.normalTitle" = "BUY";
+
+/* Class = "UILabel"; text = "Current investments"; ObjectID = "JWx-sl-Ys7"; */
+"JWx-sl-Ys7.text" = "Current investments";
+
+/* Class = "UILabel"; text = "BTC"; ObjectID = "Oqz-uI-tfV"; */
+"Oqz-uI-tfV.text" = "NaN";
+
+/* Class = "UILabel"; text = "+102€"; ObjectID = "PPh-9X-uDg"; */
+"PPh-9X-uDg.text" = "NaN";
+
+/* Class = "UILabel"; text = "0€"; ObjectID = "PRU-3f-I3P"; */
+"PRU-3f-I3P.text" = "0€";
+
+/* Class = "UILabel"; text = "Markets"; ObjectID = "VCh-3m-iEM"; */
+"VCh-3m-iEM.text" = "Markets";
+
+/* Class = "UILabel"; text = "6843€"; ObjectID = "VNW-7R-FWv"; */
+"VNW-7R-FWv.text" = "NaN";
+
+/* Class = "UILabel"; text = "BTC"; ObjectID = "Wbj-cC-HTj"; */
+"Wbj-cC-HTj.text" = "BTC";
+
+/* Class = "UILabel"; text = "6843 €"; ObjectID = "bXQ-Vu-gbg"; */
+"bXQ-Vu-gbg.text" = "NaN";
+
+/* Class = "UIButton"; normalTitle = "+"; ObjectID = "dxj-d4-3RY"; */
+"dxj-d4-3RY.normalTitle" = "+";
+
+/* Class = "UILabel"; text = "+23€"; ObjectID = "gBb-4p-XAz"; */
+"gBb-4p-XAz.text" = "NaN";
+
+/* Class = "UISegmentedControl"; iUO-fv-t6K.segmentTitles[0] = "1 Hour"; ObjectID = "iUO-fv-t6K"; */
+"iUO-fv-t6K.segmentTitles[0]" = "1 Hour";
+
+/* Class = "UISegmentedControl"; iUO-fv-t6K.segmentTitles[1] = "1 Day"; ObjectID = "iUO-fv-t6K"; */
+"iUO-fv-t6K.segmentTitles[1]" = "1 Day";
+
+/* Class = "UISegmentedControl"; iUO-fv-t6K.segmentTitles[2] = "1 Week"; ObjectID = "iUO-fv-t6K"; */
+"iUO-fv-t6K.segmentTitles[2]" = "1 Week";
+
+/* Class = "UISegmentedControl"; iUO-fv-t6K.segmentTitles[3] = "1 Month"; ObjectID = "iUO-fv-t6K"; */
+"iUO-fv-t6K.segmentTitles[3]" = "1 Month";
+
+/* Class = "UISegmentedControl"; iUO-fv-t6K.segmentTitles[4] = "All"; ObjectID = "iUO-fv-t6K"; */
+"iUO-fv-t6K.segmentTitles[4]" = "All";
+
+/* Class = "UILabel"; text = "Portfolio balance"; ObjectID = "l8w-fk-Fni"; */
+"l8w-fk-Fni.text" = "Portfolio balance";
+
+/* Class = "UILabel"; text = "6843 €"; ObjectID = "mEB-1P-jz6"; */
+"mEB-1P-jz6.text" = "NaN";
+
+/* Class = "UILabel"; text = "30€"; ObjectID = "nR3-hu-SoG"; */
+"nR3-hu-SoG.text" = "NaN";
+
+/* Class = "UILabel"; text = "+2€"; ObjectID = "o6q-rh-WmW"; */
+"o6q-rh-WmW.text" = "NaN";
+
+/* Class = "UILabel"; text = "+102€"; ObjectID = "qXK-kh-xRw"; */
+"qXK-kh-xRw.text" = "NaN";
+
+/* Class = "UILabel"; text = "Buy"; ObjectID = "sVN-iR-8js"; */
+"sVN-iR-8js.text" = "Buy";
+
+/* Class = "UILabel"; text = "Sell"; ObjectID = "tn1-1n-zVu"; */
+"tn1-1n-zVu.text" = "Sell";
+
+/* Class = "UILabel"; text = "Profits"; ObjectID = "veH-Ca-Fft"; */
+"veH-Ca-Fft.text" = "Profits";
+
+/* Class = "UILabel"; text = "BTC price"; ObjectID = "yEX-bb-7eX"; */
+"yEX-bb-7eX.text" = "BTC price";
+
+/* Class = "UIButton"; normalTitle = "SELL"; ObjectID = "yfy-F3-n18"; */
+"yfy-F3-n18.normalTitle" = "SELL";
+
+/* Class = "UILabel"; text = "BTC price"; ObjectID = "yko-Ex-lt1"; */
+"yko-Ex-lt1.text" = "Precios de NaN";
+
+/* Class = "UITextField"; placeholder = "Usd amount"; ObjectID = "zrO-dH-tV1"; */
+"zrO-dH-tV1.placeholder" = "Usd amount";

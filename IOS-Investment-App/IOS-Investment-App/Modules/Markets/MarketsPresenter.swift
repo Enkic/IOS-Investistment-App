@@ -25,14 +25,35 @@ final class MarketsPresenter {
         self.interactor = interactor
         self.wireframe = wireframe
     }
+    
 }
 
 // MARK: - Extensions -
 
 extension MarketsPresenter: MarketsPresenterInterface {
     
-    public func didLoad() {
-        interactor.fetchCryptos()
+    func fetchBoughtCoins() {
+        self.interactor.fetchBoughtCoins(storeCoins: self.didFetchBoughtCoins(coins:))
+    }
+    
+    func fetchCryptos() {
+        self.interactor.fetchCryptos(storeCoins: self.didfetchCryptos, maxRange: 10)
+    }
+    
+    func didFetchBoughtCoins(coins: [CoinBoughtEntity]) {
+        view.updateBoughtCoins(coins: coins)
+    }
+
+    func didTapBuyCoin(with id: String) {
+        wireframe.navigate(to: .buyCoins, coinId: id)
+    }
+
+    func didTapSellCoin(with id: String) {
+        wireframe.navigate(to: .sellCoins, coinId: id)
+    }
+    
+    func didfetchCryptos(_ coins: [CoinEntity]) {
+        view.updateCoins(coins: coins)
     }
     
 }

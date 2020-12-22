@@ -1,0 +1,11 @@
+/* 
+  Localizable.strings
+  IOS-Investment-App
+
+  Created by enki corbin on 22/12/2020.
+  Copyright © 2020 enki corbin. All rights reserved.
+*/
+
+"priceOf" = "precio de";
+
+"addMoneyToWallet" = "Agrega dinero a tu billetera";

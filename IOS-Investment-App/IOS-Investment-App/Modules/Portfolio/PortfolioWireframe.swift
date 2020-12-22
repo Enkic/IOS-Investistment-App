@@ -23,6 +23,7 @@ final class PortfolioWireframe: BaseWireframe {
         let interactor = PortfolioInteractor()
         let presenter = PortfolioPresenter(view: moduleViewController, interactor: interactor, wireframe: self)
         moduleViewController.presenter = presenter
+        interactor.presenter = presenter
     }
 
 }
