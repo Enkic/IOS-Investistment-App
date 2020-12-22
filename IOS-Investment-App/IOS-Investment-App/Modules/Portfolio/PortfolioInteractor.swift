@@ -49,7 +49,7 @@ extension PortfolioInteractor: PortfolioInteractorInterface {
                     
                     coinsBought[i].symbol = ticker.symbol
                     coinsBought[i].profits = coinDiffUsd
-//                    coinsBought[i].iconData = self.getCryptoIcon(coinSymbol: coinsBought[i].symbol!)
+                    coinsBought[i].iconData = self.getCryptoIcon(coinSymbol: coinsBought[i].symbol!)
                     
                     // Tmp update the view each time we get a new coin infos
                     storeCoins(coinsBought)
