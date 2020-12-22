@@ -12,7 +12,7 @@ extension UINavigationController {
     
     func setCustomViewAppearance() {
 
-        self.navigationBar.barTintColor = .systemGray3
+        navigationBar.barTintColor = .systemGray3
     }
     
     

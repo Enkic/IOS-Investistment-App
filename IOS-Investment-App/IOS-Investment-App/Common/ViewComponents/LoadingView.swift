@@ -43,18 +43,18 @@ class LoadingView: UIView {
         spinner.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
         spinner.startAnimating()
 
-        self.addSubview(spinner)
-        self.addSubview(loadingLabel)
+        addSubview(spinner)
+        addSubview(loadingLabel)
         
-        self.isHidden = true
+        isHidden = true
     }
     
     func showIndicator() {
-        self.isHidden = false
+        isHidden = false
     }
     
     func hideIndicator() {
-        self.isHidden = true
+        isHidden = true
     }
     
 }

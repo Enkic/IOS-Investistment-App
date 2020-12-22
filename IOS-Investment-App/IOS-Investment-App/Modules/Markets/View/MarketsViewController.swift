@@ -72,12 +72,12 @@ final class MarketsViewController: UIViewController {
 extension MarketsViewController: MarketsViewInterface {
 
     func updateBoughtCoins(coins: [CoinBoughtEntity]) {
-        self.boughtCoins = coins
+        boughtCoins = coins
         SellTableView.reloadData()
 
         loadingViewSell?.hideIndicator()
         
-        if self.boughtCoins.count == 0 {
+        if boughtCoins.count == 0 {
             let nothingToSellLabel = UILabel()
             
             nothingToSellLabel.text = "You have nothing to sell"

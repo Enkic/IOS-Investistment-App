@@ -15,9 +15,9 @@ class PortfolioTransactionCell: UICollectionViewCell {
     @IBOutlet weak var coinImage: UIImageView!
     
     override func awakeFromNib() {
-        self.layer.cornerRadius = 6
-        self.layer.masksToBounds = true
-        self.layer.borderWidth = 1.0
-        self.layer.borderColor = UIColor.systemGray.cgColor
+        layer.cornerRadius = 6
+        layer.masksToBounds = true
+        layer.borderWidth = 1.0
+        layer.borderColor = UIColor.systemGray.cgColor
     }
 }

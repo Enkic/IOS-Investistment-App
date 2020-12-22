@@ -89,7 +89,7 @@ extension PortfolioViewController: PortfolioViewInterface {
     }
     
     func updateTransactionsView(transactions: [TransactionEntity]) {
-        self.transactionCoins = transactions
+        transactionCoins = transactions
         transactionsCollectionView.reloadData()
         
         if transactions.count == 0 {

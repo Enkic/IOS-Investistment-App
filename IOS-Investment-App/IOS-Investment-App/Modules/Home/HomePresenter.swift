@@ -10,17 +10,17 @@ import UIKit
 
 final class HomePresenter: HomePresenterInterface {
 
-    private unowned var _view: HomeViewInterface
-    private var _wireframe: HomeWireframeInterface
+    private unowned var view: HomeViewInterface
+    private var wireframe: HomeWireframeInterface
     
     init(wireframe: HomeWireframeInterface, view: HomeViewInterface) {
-        _wireframe = wireframe
-        _view = view
+        self.wireframe = wireframe
+        self.view = view
     }
     
     func getTabBarControllers() -> [UIViewController] {
 
-        return _wireframe.getTabBarControllers()
+        return wireframe.getTabBarControllers()
     }
     
 }

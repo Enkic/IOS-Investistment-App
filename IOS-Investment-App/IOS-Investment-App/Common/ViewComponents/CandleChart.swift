@@ -49,7 +49,7 @@ class CandleChart: CandleStickChartView, IAxisValueFormatter {
         candleChartDataSet.drawValuesEnabled = false
         let candleChartData = CandleChartData(dataSet: candleChartDataSet)
         
-        self.data = candleChartData
+        data = candleChartData
         
         let xaxis = self.xAxis
         xaxis.valueFormatter = axisFormatDelegate

@@ -14,14 +14,14 @@ protocol WireframeInterface: class {
 
 class BaseWireframe {
 
-    private unowned var _viewController: UIViewController
+    private unowned var privateViewController: UIViewController
 
     // To retain view controller reference upon first access
-    private var _temporaryStoredViewController: UIViewController?
+    private var temporaryStoredViewController: UIViewController?
 
     init(viewController: UIViewController) {
-        _temporaryStoredViewController = viewController
-        _viewController = viewController
+        temporaryStoredViewController = viewController
+        privateViewController = viewController
     }
 
 }
@@ -33,8 +33,8 @@ extension BaseWireframe: WireframeInterface {
 extension BaseWireframe {
 
     var viewController: UIViewController {
-        defer { _temporaryStoredViewController = nil }
-        return _viewController
+        defer { temporaryStoredViewController = nil }
+        return privateViewController
     }
 
     var navigationController: UINavigationController? {
@@ -54,11 +54,11 @@ extension UIViewController {
 extension UINavigationController {
 
     func pushWireframe(_ wireframe: BaseWireframe, animated: Bool = true) {
-        self.pushViewController(wireframe.viewController, animated: animated)
+        pushViewController(wireframe.viewController, animated: animated)
     }
 
     func setRootWireframe(_ wireframe: BaseWireframe, animated: Bool = true) {
-        self.setViewControllers([wireframe.viewController], animated: animated)
+        setViewControllers([wireframe.viewController], animated: animated)
     }
 
 }

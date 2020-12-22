@@ -89,7 +89,7 @@ extension MarketsInteractor: MarketsInteractorInterface {
     
     func fetchCryptos(storeCoins: @escaping ([CoinEntity]) -> Void, maxRange: Int) {
         
-        self.coins = []
+        coins = []
         
         Coinpaprika.API.tickers(quotes: [.usd]).perform { (response) in
             switch (response) {
