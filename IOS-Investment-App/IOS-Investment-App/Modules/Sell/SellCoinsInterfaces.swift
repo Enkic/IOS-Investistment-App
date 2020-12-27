@@ -35,16 +35,16 @@ protocol SellCoinsPresenterInterface: PresenterInterface {
     func getCoinInfos()
     
     //Output
-    func didGetCoinInfos(coin: CoinStocksEntity)
+    func didGetCoinInfos(ticker: Ticker)
     func didGetCoinBoughtInfos(coin: CoinBoughtEntity)
-    func didGetCoinOhlcv(coin: CoinStocksEntity)
+    func didGetCoinOhlcv(ohlcv: [Ohlcv])
     func sellCoinCallBack(success: Bool)
 }
 
 protocol SellCoinsInteractorInterface: InteractorInterface {
-    func getCoinInfosFromApi(for coinId: String, storeCoin: @escaping (CoinStocksEntity) -> Void)
+    func getCoinInfosFromApi(for coinId: String, storeCoin: @escaping (Ticker) -> Void)
     func getCoinBoughtInfosFromApi(for coinId: String, storeCoin: @escaping (CoinBoughtEntity) -> Void)
-    func getCoinOhlcvFromApi(for coinId: String, from date: Date, storeCoinOhlvc: @escaping (CoinStocksEntity) -> Void)
+    func getCoinOhlcvFromApi(for coinId: String, from date: Date, storeCoinOhlvc: @escaping ([Ohlcv]) -> Void)
     func getCryptoIcon(cryptoSymbol: String) -> Data?
     func sellCoin(coinId: String, usdAmount: Int) -> Bool
 

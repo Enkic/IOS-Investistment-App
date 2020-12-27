@@ -16,6 +16,7 @@ import Alamofire
 final class MarketsInteractor {
     
     var presenter: MarketsPresenterInterface!
+    var store = Storage()
 
     let iconApi = IconAPI()
 
@@ -27,12 +28,8 @@ final class MarketsInteractor {
         for (i, coin) in coins.enumerated() {
             guard i < maxRange else { return coinsCopy }
             
-            coinsCopy.append(CoinEntity())
-            coinsCopy[i].name = coin.name
-            coinsCopy[i].symbol = coin.symbol
-            coinsCopy[i].usdPrice = Float(truncating: coin[.usd].price as NSNumber)
-//            coinsCopy[i].iconData = getCryptoIcon(cryptoName: coin.symbol)
-            coinsCopy[i].id = coin.id
+            coinsCopy.append(CoinEntity(name: coin.name, usdPrice: Float(truncating: coin[.usd].price as NSNumber), symbol: coin.symbol, id: coin.id))
+
         }
                 
         return coinsCopy
@@ -50,7 +47,7 @@ extension MarketsInteractor: MarketsInteractorInterface {
     }
     
     func fetchBoughtCoins(storeCoins: @escaping ([CoinBoughtEntity]) -> Void) {
-        var coinsBought = Storage.getBoughtCoins()
+        var coinsBought = store.getBoughtCoins()
         
         if coinsBought.count == 0 {
             storeCoins(coinsBought)

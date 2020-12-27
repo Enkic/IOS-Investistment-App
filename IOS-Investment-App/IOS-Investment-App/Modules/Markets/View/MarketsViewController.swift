@@ -14,8 +14,8 @@ final class MarketsViewController: UIViewController {
 
     // MARK: - Public properties -
 
-    @IBOutlet weak private var BuyTableView: UITableView!
-    @IBOutlet weak private var SellTableView: UITableView!
+    @IBOutlet weak private var buyTableView: UITableView!
+    @IBOutlet weak private var sellTableView: UITableView!
     var presenter: MarketsPresenterInterface!
     
     var coins: [CoinEntity] = []
@@ -32,13 +32,13 @@ final class MarketsViewController: UIViewController {
         setupLoadingBuyView()
         setupLoadingSellView()
         
-        BuyTableView.delegate = self
-        BuyTableView.dataSource = self
-        BuyTableView.accessibilityIdentifier = "Buy"
+        buyTableView.delegate = self
+        buyTableView.dataSource = self
+        buyTableView.accessibilityIdentifier = "Buy"
         
-        SellTableView.delegate = self
-        SellTableView.dataSource = self
-        SellTableView.accessibilityIdentifier = "Sell"
+        sellTableView.delegate = self
+        sellTableView.dataSource = self
+        sellTableView.accessibilityIdentifier = "Sell"
         
         presenter.fetchCryptos()
         presenter.fetchBoughtCoins()
@@ -47,22 +47,22 @@ final class MarketsViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        if let selectedIndexPath = BuyTableView.indexPathForSelectedRow {
-            BuyTableView.deselectRow(at: selectedIndexPath, animated: animated)
+        if let selectedIndexPath = buyTableView.indexPathForSelectedRow {
+            buyTableView.deselectRow(at: selectedIndexPath, animated: animated)
         }
     }
     
     func setupLoadingBuyView() {
-        loadingViewBuy = LoadingView(parentViewFrame: BuyTableView.frame, navigationControllerHeight: (navigationController?.navigationBar.frame.height ?? 0))
-        BuyTableView.addSubview(loadingViewBuy!)
-        BuyTableView.separatorStyle = .none
+        loadingViewBuy = LoadingView(parentViewFrame: buyTableView.frame, navigationControllerHeight: (navigationController?.navigationBar.frame.height ?? 0))
+        buyTableView.addSubview(loadingViewBuy!)
+        buyTableView.separatorStyle = .none
         loadingViewBuy?.showIndicator()
     }
     
     func setupLoadingSellView() {
-        loadingViewSell = LoadingView(parentViewFrame: SellTableView.frame, navigationControllerHeight: (navigationController?.navigationBar.frame.height ?? 0))
-        SellTableView.addSubview(loadingViewSell!)
-        SellTableView.separatorStyle = .none
+        loadingViewSell = LoadingView(parentViewFrame: sellTableView.frame, navigationControllerHeight: (navigationController?.navigationBar.frame.height ?? 0))
+        sellTableView.addSubview(loadingViewSell!)
+        sellTableView.separatorStyle = .none
         loadingViewSell?.showIndicator()
     }
 }
@@ -73,7 +73,7 @@ extension MarketsViewController: MarketsViewInterface {
 
     func updateBoughtCoins(coins: [CoinBoughtEntity]) {
         boughtCoins = coins
-        SellTableView.reloadData()
+        sellTableView.reloadData()
 
         loadingViewSell?.hideIndicator()
         
@@ -83,19 +83,19 @@ extension MarketsViewController: MarketsViewInterface {
             nothingToSellLabel.text = "You have nothing to sell"
             nothingToSellLabel.textColor = .systemGray
             
-            SellTableView.backgroundView = nothingToSellLabel
+            sellTableView.backgroundView = nothingToSellLabel
         } else {
-            SellTableView.separatorStyle = .singleLine
-            SellTableView.backgroundView = nil
+            sellTableView.separatorStyle = .singleLine
+            sellTableView.backgroundView = nil
         }
     }
     
     
     func updateCoins(coins: [CoinEntity]) {
         self.coins = coins
-        BuyTableView.reloadData()
+        buyTableView.reloadData()
         
-        BuyTableView.separatorStyle = .singleLine
+        buyTableView.separatorStyle = .singleLine
         loadingViewBuy?.hideIndicator()
     }
     
@@ -107,11 +107,11 @@ extension MarketsViewController: UITableViewDelegate, UITableViewDataSource {
         if tableView.accessibilityIdentifier == "Buy" {
             guard let cell = tableView.cellForRow(at: indexPath) as? MarketsBuyTableViewCell else { return }
             
-            presenter.didTapBuyCoin(with: cell.coinId)
+            presenter.didTapBuyCoin(withIdentifier: cell.coinId)
         } else if tableView.accessibilityIdentifier == "Sell" {
             guard let cell = tableView.cellForRow(at: indexPath) as? MarketsSellTableViewCell else { return }
             
-            presenter.didTapSellCoin(with: cell.coinId)
+            presenter.didTapSellCoin(withIdentifier: cell.coinId)
         }
     }
     
@@ -131,11 +131,11 @@ extension MarketsViewController: UITableViewDelegate, UITableViewDataSource {
 
         if tableView.accessibilityIdentifier == "Buy" {
             let cell = tableView.dequeueReusableCell(withIdentifier: "MarketBuyCell", for: indexPath) as! MarketsBuyTableViewCell
-            let coinSymbol = coins[indexPath.row].symbol ?? "NaN"
+            let coinSymbol = coins[indexPath.row].symbol
             
             cell.cryptoIcon.image = presenter.getCryptoIcon(coinSymbol: coinSymbol)
             cell.cryptoName.text = coinSymbol
-            cell.cryptoValue.text = String.formatToDollar(price: coins[indexPath.row].usdPrice!)
+            cell.cryptoValue.text = String.formatToDollar(price: coins[indexPath.row].usdPrice)
             cell.coinId = coins[indexPath.row].id
             
             return cell

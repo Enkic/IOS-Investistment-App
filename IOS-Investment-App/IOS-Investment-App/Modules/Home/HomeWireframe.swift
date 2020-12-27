@@ -11,7 +11,7 @@ import UIKit
 final class HomeWireframe: BaseWireframe {
 
     // MARK: - Private properties -
-    private let _storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+    private let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
 
     // MARK: - Module setup -
     let moduleViewController = HomeTabBarController()

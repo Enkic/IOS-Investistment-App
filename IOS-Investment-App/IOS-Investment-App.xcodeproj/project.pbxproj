@@ -33,7 +33,6 @@
 		50853189258E15B5002D58B2 /* SellCoinsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50853185258E15B5002D58B2 /* SellCoinsViewController.swift */; };
 		5085318A258E15B5002D58B2 /* SellCoinsWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50853186258E15B5002D58B2 /* SellCoinsWireframe.swift */; };
 		5085318D258E1FC6002D58B2 /* BuyCoinsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5085318C258E1FC6002D58B2 /* BuyCoinsInteractor.swift */; };
-		50853190258E2064002D58B2 /* CoinStocksEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5085318F258E2064002D58B2 /* CoinStocksEntity.swift */; };
 		50853193258E45E9002D58B2 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50853192258E45E8002D58B2 /* LoadingView.swift */; };
 		508531A6258F6AD7002D58B2 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508531A5258F6AD6002D58B2 /* Storage.swift */; };
 		5089EC01258F6F36002FEBE3 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5089EC00258F6F36002FEBE3 /* Alert.swift */; };
@@ -98,7 +97,6 @@
 		50853185258E15B5002D58B2 /* SellCoinsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SellCoinsViewController.swift; sourceTree = "<group>"; };
 		50853186258E15B5002D58B2 /* SellCoinsWireframe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SellCoinsWireframe.swift; sourceTree = "<group>"; };
 		5085318C258E1FC6002D58B2 /* BuyCoinsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyCoinsInteractor.swift; sourceTree = "<group>"; };
-		5085318F258E2064002D58B2 /* CoinStocksEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinStocksEntity.swift; sourceTree = "<group>"; };
 		50853192258E45E8002D58B2 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		508531A5258F6AD6002D58B2 /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 		5089EC00258F6F36002FEBE3 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
@@ -297,7 +295,6 @@
 			isa = PBXGroup;
 			children = (
 				50334E2E25769B0400318AD8 /* CoinEntity.swift */,
-				5085318F258E2064002D58B2 /* CoinStocksEntity.swift */,
 				5089EC16258F88D2002FEBE3 /* CoinBoughtEntity.swift */,
 				5089EC2F2590DBBE002FEBE3 /* TransactionEntity.swift */,
 			);
@@ -610,7 +607,6 @@
 				5085318A258E15B5002D58B2 /* SellCoinsWireframe.swift in Sources */,
 				5085318D258E1FC6002D58B2 /* BuyCoinsInteractor.swift in Sources */,
 				50ADC1542576592000D93C10 /* InteractorInterface.swift in Sources */,
-				50853190258E2064002D58B2 /* CoinStocksEntity.swift in Sources */,
 				50853189258E15B5002D58B2 /* SellCoinsViewController.swift in Sources */,
 				503D00D3258B62470007DA97 /* MarketsBuyTableViewCell.swift in Sources */,
 				5007F715256E9088009EBD6C /* DesignableLabel.swift in Sources */,

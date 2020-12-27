@@ -14,6 +14,8 @@ class SellCoinsInteractor {
     let iconesUrl = "https://cryptoicons.org/api/icon/"
     let iconeSizeUrl = "/32"
     
+    var store = Storage()
+    
 }
 
 extension SellCoinsInteractor: SellCoinsInteractorInterface {
@@ -28,7 +30,7 @@ extension SellCoinsInteractor: SellCoinsInteractorInterface {
     }
 
     func getCoinBoughtInfosFromApi(for coinId: String, storeCoin: @escaping (CoinBoughtEntity) -> Void) {
-        var coinBought = Storage.getBoughtCoin(with: coinId)
+        var coinBought = store.getBoughtCoin(with: coinId)
         
         guard coinBought != nil else { return }
         
@@ -50,22 +52,22 @@ extension SellCoinsInteractor: SellCoinsInteractorInterface {
         }
     }
     
-    func getCoinOhlcvFromApi(for coinId: String, from date: Date, storeCoinOhlvc: @escaping (CoinStocksEntity) -> Void) {
+    func getCoinOhlcvFromApi(for coinId: String, from date: Date, storeCoinOhlvc: @escaping ([Ohlcv]) -> Void) {
         Coinpaprika.API.coinHistoricalOhlcv(id: coinId, start: date, limit: 366, quote: .usd).perform { (response) in
             switch response {
               case .success(let ohlcv):
-                storeCoinOhlvc(CoinStocksEntity(ticker: nil, ohlcv: ohlcv))
+                storeCoinOhlvc(ohlcv)
             case .failure(_):
                 break
             }
         }
     }
     
-    func getCoinInfosFromApi(for coinId: String, storeCoin: @escaping (CoinStocksEntity) -> Void) {
+    func getCoinInfosFromApi(for coinId: String, storeCoin: @escaping (Ticker) -> Void) {
         Coinpaprika.API.ticker(id: coinId, quotes: [.usd]).perform { (response) in
             switch response {
               case .success(let ticker):
-                storeCoin(CoinStocksEntity(ticker: ticker, ohlcv: nil))
+                storeCoin(ticker)
             case .failure(_):
                 break
             }
@@ -74,7 +76,7 @@ extension SellCoinsInteractor: SellCoinsInteractorInterface {
     
     func sellCoin(coinId: String, usdAmount: Int) -> Bool {
 
-        return Storage.sellCoin(coinId: coinId, usdAmount: usdAmount)
+        return store.sellCoin(coinId: coinId, usdAmount: usdAmount)
     }
     
 }

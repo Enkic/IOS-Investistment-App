@@ -92,9 +92,7 @@ extension SellCoinsViewController: SellCoinsViewInterface {
         usdAmountBoughtLabel.text = String.formatToDollar(price: coin.usdAmount)
         usdProfitsLabel.text = String.formatToDollar(price: coin.profits!)
         purchasePriceLabel.text = String.formatToDollar(price: coin.boughtPrice)
-        
-        print("price bought: ", coin.boughtPrice)
-        
+                
         if coin.profits! <= -0.1 {
             usdProfitsLabel.textColor = .systemRed
         } else if coin.profits! >= 0.1 {

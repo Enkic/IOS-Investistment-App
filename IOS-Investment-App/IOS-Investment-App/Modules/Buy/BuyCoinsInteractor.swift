@@ -11,7 +11,7 @@ import Coinpaprika
 
 class BuyCoinsInteractor {
 
-
+    var store = Storage()
     
 }
 
@@ -32,27 +32,27 @@ extension BuyCoinsInteractor: BuyCoinsInteractorInterface {
     
     func buyCoin(coinId: String, coinAmount: Float, usdAmount: Int, boughtPrice: Float) -> Bool {
         
-        return Storage.buyCoin(coinId: coinId, coinAmount: coinAmount, usdAmount: usdAmount, boughtPrice: boughtPrice)
+        return store.buyCoin(coinId: coinId, coinAmount: coinAmount, usdAmount: usdAmount, boughtPrice: boughtPrice)
     }
 
 
-    func getCoinInfosFromApi(for coinId: String, storeCoin: @escaping (CoinStocksEntity) -> Void) {
+    func getCoinInfosFromApi(for coinId: String, storeCoin: @escaping (Ticker) -> Void) {
         Coinpaprika.API.ticker(id: coinId, quotes: [.usd]).perform { (response) in
             switch response {
               case .success(let ticker):
-                storeCoin(CoinStocksEntity(ticker: ticker, ohlcv: nil))
+                storeCoin(ticker)
             case .failure(_):
                 break
             }
         }
     }
     
-    func getCoinOhlcvFromApi(for coinId: String, from date: Date, storeCoinOhlvc:  @escaping (CoinStocksEntity) -> Void) {
+    func getCoinOhlcvFromApi(for coinId: String, from date: Date, storeCoinOhlvc:  @escaping ([Ohlcv]) -> Void) {
         
         Coinpaprika.API.coinHistoricalOhlcv(id: coinId, start: date, limit: 366, quote: .usd).perform { (response) in
             switch response {
               case .success(let ohlcv):
-                storeCoinOhlvc(CoinStocksEntity(ticker: nil, ohlcv: ohlcv))
+                storeCoinOhlvc(ohlcv)
             case .failure(_):
                 break
             }

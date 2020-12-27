@@ -13,9 +13,7 @@ import UIKit
 class HomeTabBarController: UITabBarController {
     
     var presenter: HomePresenterInterface!
-    
-    private let _storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-    
+        
     override func viewDidLoad() {
 
     }
@@ -47,7 +45,6 @@ class HomeTabBarController: UITabBarController {
 extension HomeTabBarController: UITabBarControllerDelegate {
         
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
-        print("Selected \(viewController.title!)")
     }
     
 }

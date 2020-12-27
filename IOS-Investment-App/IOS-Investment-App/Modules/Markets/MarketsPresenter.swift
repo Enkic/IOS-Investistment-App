@@ -39,22 +39,22 @@ extension MarketsPresenter: MarketsPresenterInterface {
     }
     
     func fetchBoughtCoins() {
-        self.interactor.fetchBoughtCoins(storeCoins: self.didFetchBoughtCoins(coins:))
+        interactor.fetchBoughtCoins(storeCoins: self.didFetchBoughtCoins(coins:))
     }
     
     func fetchCryptos() {
-        self.interactor.fetchCryptos(storeCoins: self.didfetchCryptos, maxRange: 10)
+        interactor.fetchCryptos(storeCoins: self.didfetchCryptos, maxRange: 10)
     }
     
     func didFetchBoughtCoins(coins: [CoinBoughtEntity]) {
         view.updateBoughtCoins(coins: coins)
     }
 
-    func didTapBuyCoin(with id: String) {
+    func didTapBuyCoin(withIdentifier id: String) {
         wireframe.navigate(to: .buyCoins, coinId: id)
     }
 
-    func didTapSellCoin(with id: String) {
+    func didTapSellCoin(withIdentifier id: String) {
         wireframe.navigate(to: .sellCoins, coinId: id)
     }
     

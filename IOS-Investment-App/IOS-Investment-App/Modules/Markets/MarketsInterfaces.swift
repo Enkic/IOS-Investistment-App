@@ -34,8 +34,8 @@ protocol MarketsPresenterInterface: PresenterInterface {
     // Input
     func fetchBoughtCoins()
     func fetchCryptos()
-    func didTapBuyCoin(with id: String)
-    func didTapSellCoin(with id: String)
+    func didTapBuyCoin(withIdentifier id: String)
+    func didTapSellCoin(withIdentifier id: String)
     func getCryptoIcon(coinSymbol: String) -> UIImage?
 
     //Output

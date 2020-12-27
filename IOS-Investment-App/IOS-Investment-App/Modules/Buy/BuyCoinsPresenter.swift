@@ -9,6 +9,7 @@
 //
 
 import Foundation
+import Coinpaprika
 
 final class BuyCoinsPresenter {
 
@@ -42,8 +43,8 @@ final class BuyCoinsPresenter {
 extension BuyCoinsPresenter: BuyCoinsPresenterInterface {
     
     func buyCoin(usdAmount: String?) {
-        if usdAmount != nil && usdAmount != "" && Int(usdAmount!) != nil {
-            interactor.getConvertionRateFromApi(for: coinId, usdAmount: Int(usdAmount!)!, convertionCallBack: didGetCoinRate)
+        if let amountText = usdAmount, let amount = Int(amountText)  {
+            interactor.getConvertionRateFromApi(for: coinId, usdAmount: amount, convertionCallBack: didGetCoinRate)
         } else {
             didBuyCoin(success: false)
         }
@@ -54,19 +55,19 @@ extension BuyCoinsPresenter: BuyCoinsPresenterInterface {
     }
  
     func getCoinInfos() {
-        interactor.getCoinInfosFromApi(for: coinId, storeCoin: didGetCoinInfos(coinInfos:))
+        interactor.getCoinInfosFromApi(for: coinId, storeCoin: didGetCoinInfos(ticker:))
     }
     
-    func didGetCoinInfos(coinInfos: CoinStocksEntity) {
-        view.updateCoinView(coinInfos: coinInfos.ticker!)
+    func didGetCoinInfos(ticker: Ticker) {
+        view.updateCoinView(coinInfos: ticker)
     }
     
     func getCoinOhlcv(from date: Date) {
         
-        interactor.getCoinOhlcvFromApi(for: coinId, from: date, storeCoinOhlvc: didGetCoinOhlcv(coinInfos:))
+        interactor.getCoinOhlcvFromApi(for: coinId, from: date, storeCoinOhlvc: didGetCoinOhlcv(ohlcv:))
     }
     
-    func didGetCoinOhlcv(coinInfos: CoinStocksEntity) {
-        view.updateCoinView(coinOhlcv: coinInfos.ohlcv!)
+    func didGetCoinOhlcv(ohlcv: [Ohlcv]) {
+        view.updateCoinView(coinOhlcv: ohlcv)
     }
 }

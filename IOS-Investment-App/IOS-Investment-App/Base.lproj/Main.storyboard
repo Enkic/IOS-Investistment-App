@@ -223,8 +223,8 @@
                         <imageReference key="image" image="chart.bar" catalog="system" symbolScale="large"/>
                     </tabBarItem>
                     <connections>
-                        <outlet property="BuyTableView" destination="M3b-xT-5CG" id="eRU-qr-iXU"/>
-                        <outlet property="SellTableView" destination="0J3-PH-Wgs" id="6gk-pf-zUc"/>
+                        <outlet property="buyTableView" destination="M3b-xT-5CG" id="eRU-qr-iXU"/>
+                        <outlet property="sellTableView" destination="0J3-PH-Wgs" id="6gk-pf-zUc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UAP-ff-FHr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -349,9 +349,9 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="BuyAmountTextField" destination="zrO-dH-tV1" id="HVf-kK-O3A"/>
-                        <outlet property="BuyButton" destination="IZo-gy-5db" id="mDC-FP-uc0"/>
-                        <outlet property="ChartViewContainer" destination="WhB-uc-6hb" id="XlO-CO-i96"/>
+                        <outlet property="buyAmountTextField" destination="zrO-dH-tV1" id="HVf-kK-O3A"/>
+                        <outlet property="buyButton" destination="IZo-gy-5db" id="mDC-FP-uc0"/>
+                        <outlet property="chartViewContainer" destination="WhB-uc-6hb" id="XlO-CO-i96"/>
                         <outlet property="coinPriceTitleLabel" destination="yEX-bb-7eX" id="qh8-9v-Uf6"/>
                         <outlet property="coinPriceValueLabel" destination="mEB-1P-jz6" id="sFG-Qp-Kq4"/>
                         <outlet property="dateTimeStockValueSegment" destination="iUO-fv-t6K" id="64q-1E-xfd"/>

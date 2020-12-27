@@ -11,17 +11,17 @@ import UIKit
 
 class Storage {
     
-    static let defaults = UserDefaults.standard
-    static let encoder = JSONEncoder()
-    static let decoder = JSONDecoder()
+    private let defaults = UserDefaults.standard
+    private let encoder = JSONEncoder()
+    private let decoder = JSONDecoder()
 
-    enum Keys: String {
+    private enum Keys: String {
         case walletAmount = "WalletAmount"
         case boughtCryptos = "BoughtCryptos"
         case transactions = "Transactions"
     }
     
-    static func addTransaction(coinId: String, usdProfits: Float, symbol: String, iconData: Data?) -> Bool {
+    func addTransaction(coinId: String, usdProfits: Float, symbol: String, iconData: Data?) -> Bool {
         var transactions = getTransations()
         let transaction = TransactionEntity(coinId: coinId, usdProfits: usdProfits, symbol: symbol)
         
@@ -36,7 +36,7 @@ class Storage {
         return false
     }
     
-    static func getTransations() -> [TransactionEntity] {
+    func getTransations() -> [TransactionEntity] {
         if let transactionsMapData = defaults.object(forKey: Keys.transactions.rawValue) as? Data {
             if let transactionsMap = try? decoder.decode([TransactionEntity].self, from: transactionsMapData) {
                 
@@ -47,7 +47,7 @@ class Storage {
         return []
     }
     
-    static func getBoughtCoins() -> [CoinBoughtEntity] {
+    func getBoughtCoins() -> [CoinBoughtEntity] {
         if let coinsBoughtMapData = defaults.object(forKey: Keys.boughtCryptos.rawValue) as? Data {
             if let coinsBoughtMap = try? decoder.decode([CoinBoughtEntity].self, from: coinsBoughtMapData) {
                 
@@ -58,7 +58,7 @@ class Storage {
         return []
     }
     
-    static func getBoughtCoin(with id: String) -> CoinBoughtEntity? {
+    func getBoughtCoin(with id: String) -> CoinBoughtEntity? {
         if let coinsBoughtMapData = defaults.object(forKey: Keys.boughtCryptos.rawValue) as? Data {
             if let coinsBoughtMap = try? decoder.decode([CoinBoughtEntity].self, from: coinsBoughtMapData) {
                 
@@ -72,7 +72,7 @@ class Storage {
         return nil
     }
     
-    static func sellCoin(coinId: String, usdAmount: Int) -> Bool {
+    func sellCoin(coinId: String, usdAmount: Int) -> Bool {
         var coinsBoughtMap = getBoughtCoins()
         
         if coinsBoughtMap.contains(where: {$0.id == coinId}) {
@@ -89,7 +89,7 @@ class Storage {
         return false
     }
     
-    static func buyCoin(coinId: String, coinAmount: Float, usdAmount: Int, boughtPrice: Float) -> Bool {
+    func buyCoin(coinId: String, coinAmount: Float, usdAmount: Int, boughtPrice: Float) -> Bool {
         guard substarctMoneyToWallet(amount: usdAmount) else { return false }
         
         var coinsBoughtMap = getBoughtCoins()
@@ -117,19 +117,19 @@ class Storage {
         return true
     }
     
-    static func getMoneyFromWallet() -> Int {
+    func getMoneyFromWallet() -> Int {
         
         return defaults.integer(forKey: Keys.walletAmount.rawValue)
     }
     
-    static func addMoneyToWallet(amount: Int) {
+    func addMoneyToWallet(amount: Int) {
         var currentMoney = getMoneyFromWallet()
                 
         currentMoney += amount
         defaults.set(currentMoney, forKey: Keys.walletAmount.rawValue)
     }
     
-    static func substarctMoneyToWallet(amount: Int) -> Bool {
+    func substarctMoneyToWallet(amount: Int) -> Bool {
         var currentMoney = getMoneyFromWallet()
         
         currentMoney -= amount

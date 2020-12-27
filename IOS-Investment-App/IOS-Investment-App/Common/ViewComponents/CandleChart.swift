@@ -10,6 +10,7 @@ import Charts
 import Coinpaprika
 
 class CandleChart: CandleStickChartView, IAxisValueFormatter {
+    let dateFormatter = DateFormatter()
     
     enum SelectedXaxisDate {
         case minute
@@ -22,7 +23,7 @@ class CandleChart: CandleStickChartView, IAxisValueFormatter {
     
     func updateDataView(coinOhlcv: [Ohlcv], axisFormatDelegate: IAxisValueFormatter) {
         var entries: [CandleChartDataEntry] = []
-        for (_, data) in coinOhlcv.enumerated() {
+        _ = coinOhlcv.map { data in
             let x = Double(data.timeOpen.timeIntervalSince1970)
             let h = Double(truncating: data.high! as NSNumber)
             let l = Double(truncating: data.low! as NSNumber)
@@ -56,7 +57,6 @@ class CandleChart: CandleStickChartView, IAxisValueFormatter {
     }
     
     public func stringForValue(_ value: Double, axis: AxisBase?) -> String {
-        let dateFormatter = DateFormatter()
         
         switch selectedDate {
         case .minute:

@@ -9,6 +9,7 @@
 //
 
 import Foundation
+import Coinpaprika
 
 final class SellCoinsPresenter {
 
@@ -17,6 +18,8 @@ final class SellCoinsPresenter {
     private unowned let view: SellCoinsViewInterface
     private let wireframe: SellCoinsWireframeInterface
     private let interactor: SellCoinsInteractorInterface
+
+    var store = Storage()
 
     private let coinId: String
 
@@ -31,10 +34,10 @@ final class SellCoinsPresenter {
     }
     
     func didGetCoinSellInfos(coin: CoinBoughtEntity) {
-        let transactionState = Storage.sellCoin(coinId: coinId, usdAmount: Int(Float(coin.usdAmount) + coin.profits!))
+        let transactionState = store.sellCoin(coinId: coinId, usdAmount: Int(Float(coin.usdAmount) + coin.profits!))
         let iconData = interactor.getCryptoIcon(cryptoSymbol: coin.symbol!)
         
-        _ = Storage.addTransaction(coinId: coinId, usdProfits: coin.profits!, symbol: coin.symbol! ,iconData: iconData)
+        _ = store.addTransaction(coinId: coinId, usdProfits: coin.profits!, symbol: coin.symbol! ,iconData: iconData)
         sellCoinCallBack(success: transactionState)
     }
 }
@@ -56,7 +59,7 @@ extension SellCoinsPresenter: SellCoinsPresenterInterface {
     }
     
     func getCoinInfos() {
-        interactor.getCoinInfosFromApi(for: coinId, storeCoin: didGetCoinInfos(coin:))
+        interactor.getCoinInfosFromApi(for: coinId, storeCoin: didGetCoinInfos(ticker:))
     }
     
     func getCoinBoughtInfos() {
@@ -64,19 +67,19 @@ extension SellCoinsPresenter: SellCoinsPresenterInterface {
     }
     
     func getCoinOhlcv(from date: Date) {
-        interactor.getCoinOhlcvFromApi(for: coinId, from: date, storeCoinOhlvc: didGetCoinOhlcv(coin:))
+        interactor.getCoinOhlcvFromApi(for: coinId, from: date, storeCoinOhlvc: didGetCoinOhlcv(ohlcv:))
     }
     
-    func didGetCoinInfos(coin: CoinStocksEntity) {
-        view.updateCoinView(coin: coin.ticker!)
+    func didGetCoinInfos(ticker: Ticker) {
+        view.updateCoinView(coin: ticker)
     }
     
     func didGetCoinBoughtInfos(coin: CoinBoughtEntity) {
         view.updateCoinView(coin: coin)
     }
     
-    func didGetCoinOhlcv(coin: CoinStocksEntity) {
-        view.updateChartView(ohlcv: coin.ohlcv!)
+    func didGetCoinOhlcv(ohlcv: [Ohlcv]) {
+        view.updateChartView(ohlcv: ohlcv)
     }
     
 }

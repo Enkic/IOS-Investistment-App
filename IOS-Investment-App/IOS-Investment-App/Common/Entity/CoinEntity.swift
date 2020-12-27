@@ -9,8 +9,8 @@
 import UIKit
 
 struct CoinEntity {
-    var name: String?
-    var usdPrice: Float?
-    var symbol: String?
-    var id: String?
+    var name: String
+    var usdPrice: Float
+    var symbol: String
+    var id: String
 }

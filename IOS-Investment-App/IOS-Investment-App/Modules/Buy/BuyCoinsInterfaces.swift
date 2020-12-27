@@ -30,14 +30,14 @@ protocol BuyCoinsPresenterInterface: PresenterInterface {
     func buyCoin(usdAmount: String?)
 
     //Output
-    func didGetCoinInfos(coinInfos: CoinStocksEntity)
-    func didGetCoinOhlcv(coinInfos: CoinStocksEntity)
+    func didGetCoinInfos(ticker: Ticker)
+    func didGetCoinOhlcv(ohlcv: [Ohlcv])
     func didBuyCoin(success: Bool)
 }
 
 protocol BuyCoinsInteractorInterface: PresenterInterface {
-    func getCoinInfosFromApi(for coinId: String, storeCoin: @escaping (CoinStocksEntity) -> Void)
-    func getCoinOhlcvFromApi(for coinId: String, from date: Date, storeCoinOhlvc: @escaping (CoinStocksEntity) -> Void)
+    func getCoinInfosFromApi(for coinId: String, storeCoin: @escaping (Ticker) -> Void)
+    func getCoinOhlcvFromApi(for coinId: String, from date: Date, storeCoinOhlvc: @escaping ([Ohlcv]) -> Void)
     func getConvertionRateFromApi(for coinId: String, usdAmount: Int, convertionCallBack: @escaping (String, Int, Float, Float) -> Void)
     func buyCoin(coinId: String, coinAmount: Float, usdAmount: Int, boughtPrice: Float) -> Bool
 }

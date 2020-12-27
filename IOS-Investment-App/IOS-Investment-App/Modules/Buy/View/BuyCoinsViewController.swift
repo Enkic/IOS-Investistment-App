@@ -22,9 +22,9 @@ final class BuyCoinsViewController: UIViewController {
     @IBOutlet weak var coinPriceValueLabel: UILabel!
     @IBOutlet weak var dateTimeStockValueSegment: DateSegmentControl!
     
-    @IBOutlet weak var BuyAmountTextField: UITextField!
-    @IBOutlet weak var BuyButton: DesignableButton!
-    @IBOutlet weak var ChartViewContainer: DesignableView!
+    @IBOutlet weak var buyAmountTextField: UITextField!
+    @IBOutlet weak var buyButton: DesignableButton!
+    @IBOutlet weak var chartViewContainer: DesignableView!
     
     weak var axisFormatDelegate: IAxisValueFormatter?
     var chartView: CandleChart!
@@ -53,28 +53,27 @@ final class BuyCoinsViewController: UIViewController {
         toolbar.barTintColor = .gray
         toolbar.tintColor = .white
         toolbar.items = [
-            UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(doneButtonTappedForMyNumericTextField))
+            UIBarButtonItem(title: Bundle.main.localizedString(forKey: "done", value: "Done", table: "Localizable"), style: .done, target: self, action: #selector(doneButtonTappedForMyNumericTextField))
         ]
         toolbar.isTranslucent = true
-        BuyAmountTextField.autoresizingMask = .flexibleHeight
-        BuyAmountTextField.inputAccessoryView = toolbar
+        buyAmountTextField.autoresizingMask = .flexibleHeight
+        buyAmountTextField.inputAccessoryView = toolbar
     }
     
     @objc func doneButtonTappedForMyNumericTextField() {
-        print("Done");
-        BuyAmountTextField.resignFirstResponder()
+        buyAmountTextField.resignFirstResponder()
     }
     
     func initChartView() {
-        let frame = CGRect(x: 10, y: 60, width: ChartViewContainer.frame.width - 30, height: ChartViewContainer.frame.height - 70)
+        let frame = CGRect(x: 10, y: 60, width: chartViewContainer.frame.width - 30, height: chartViewContainer.frame.height - 70)
 
         chartView = CandleChart(frame: frame)
-        ChartViewContainer.addSubview(chartView)
+        chartViewContainer.addSubview(chartView)
 
         axisFormatDelegate = chartView
     }
     
-    @objc func segmentedControlValueChanged(_ sender:UISegmentedControl!) {
+    @objc func segmentedControlValueChanged(_ sender: UISegmentedControl) {
         
         let ohlcvFromDate = dateTimeStockValueSegment.getSelectedDate()
         presenter.getCoinOhlcv(from: ohlcvFromDate)
@@ -97,7 +96,7 @@ final class BuyCoinsViewController: UIViewController {
     }
     
     @IBAction func BuyClick(_ sender: Any) {
-        presenter.buyCoin(usdAmount: BuyAmountTextField.text)
+        presenter.buyCoin(usdAmount: buyAmountTextField.text)
     }
     
 }

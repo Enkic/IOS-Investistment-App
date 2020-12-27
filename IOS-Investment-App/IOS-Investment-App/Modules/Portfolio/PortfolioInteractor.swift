@@ -14,6 +14,7 @@ import Coinpaprika
 final class PortfolioInteractor {
     var presenter: PortfolioPresenterInterface!
     
+    var store = Storage()
     let iconApi = IconAPI()
 
 }
@@ -28,7 +29,7 @@ extension PortfolioInteractor: PortfolioInteractorInterface {
     }
     
     func getBoughtCoinsInfosFromApi(storeCoins: @escaping (_ coins: [CoinBoughtEntity]) -> Void) {
-        var coinsBought = Storage.getBoughtCoins()
+        var coinsBought = store.getBoughtCoins()
         
         if coinsBought.count == 0 {
             storeCoins(coinsBought)
@@ -55,19 +56,19 @@ extension PortfolioInteractor: PortfolioInteractorInterface {
     }
     
     func getTransactions() {
-        let transactions = Storage.getTransations()
+        let transactions = store.getTransations()
         
         presenter.didGetTransactions(transactions: transactions)
     }
     
     func storeMoneyWallet(add amount: Int) {
-        Storage.addMoneyToWallet(amount: amount)
+        store.addMoneyToWallet(amount: amount)
         
-        presenter.storeMoneyWalletCallback(success: true, walletBalance: Storage.getMoneyFromWallet())
+        presenter.storeMoneyWalletCallback(success: true, walletBalance: store.getMoneyFromWallet())
     }
     
     func getMoneyWallet() -> Int {
-        return Storage.getMoneyFromWallet()
+        return store.getMoneyFromWallet()
     }
     
 }
