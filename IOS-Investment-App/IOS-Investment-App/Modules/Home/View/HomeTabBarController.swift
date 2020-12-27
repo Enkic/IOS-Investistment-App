@@ -14,7 +14,7 @@ class HomeTabBarController: UITabBarController {
     
     var presenter: HomePresenterInterface!
     
-    private let _storyboard = UIStoryboard(name: "Main", bundle: nil)
+    private let _storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
     
     override func viewDidLoad() {
 
@@ -22,8 +22,6 @@ class HomeTabBarController: UITabBarController {
     
     override func viewWillAppear(_ animated: Bool) {
         
-        self.navigationController?.setCustomViewAppearance()
-
         self.viewControllers = presenter.getTabBarControllers()
         super.viewWillAppear(true)
     }

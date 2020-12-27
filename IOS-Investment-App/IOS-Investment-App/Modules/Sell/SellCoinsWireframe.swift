@@ -15,7 +15,7 @@ final class SellCoinsWireframe: BaseWireframe {
     // MARK: - Private properties -
 
     // MARK: - Module setup -
-    let moduleViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "SellCoin") as! SellCoinsViewController
+    let moduleViewController = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(identifier: "SellCoin") as! SellCoinsViewController
 
     init(coinId: String) {
         let interactor = SellCoinsInteractor()

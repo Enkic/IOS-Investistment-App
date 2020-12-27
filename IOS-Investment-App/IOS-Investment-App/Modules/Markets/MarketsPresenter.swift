@@ -9,6 +9,7 @@
 //
 
 import Foundation
+import UIKit
 
 final class MarketsPresenter {
 
@@ -31,6 +32,11 @@ final class MarketsPresenter {
 // MARK: - Extensions -
 
 extension MarketsPresenter: MarketsPresenterInterface {
+    
+    func getCryptoIcon(coinSymbol: String) -> UIImage? {
+        
+        return interactor.getCryptoIcon(coinSymbol: coinSymbol)
+    }
     
     func fetchBoughtCoins() {
         self.interactor.fetchBoughtCoins(storeCoins: self.didFetchBoughtCoins(coins:))

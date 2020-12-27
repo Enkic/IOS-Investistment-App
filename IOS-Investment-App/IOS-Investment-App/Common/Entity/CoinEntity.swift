@@ -12,6 +12,5 @@ struct CoinEntity {
     var name: String?
     var usdPrice: Float?
     var symbol: String?
-    var iconData: Data?
     var id: String?
 }

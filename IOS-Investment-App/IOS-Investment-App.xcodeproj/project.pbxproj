@@ -18,10 +18,12 @@
 		503D008F2583BB7A0007DA97 /* ThemeInitializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503D008E2583BB7A0007DA97 /* ThemeInitializer.swift */; };
 		503D00932583BBAC0007DA97 /* InitializerInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503D00922583BBAC0007DA97 /* InitializerInterface.swift */; };
 		503D00962583BC1D0007DA97 /* MainNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503D00952583BC1D0007DA97 /* MainNavigationController.swift */; };
-		503D00992583BCE60007DA97 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503D00982583BCE60007DA97 /* Constants.swift */; };
 		503D00A32583BEA40007DA97 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503D00A22583BEA40007DA97 /* UIColor.swift */; };
 		503D00A72583C0B10007DA97 /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503D00A62583C0B10007DA97 /* HomePresenter.swift */; };
 		503D00D3258B62470007DA97 /* MarketsBuyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503D00D2258B62470007DA97 /* MarketsBuyTableViewCell.swift */; };
+		5052B93B2598F484004F70B8 /* DateSegmentControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5052B93A2598F484004F70B8 /* DateSegmentControl.swift */; };
+		5052B93E2598F845004F70B8 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5052B93D2598F845004F70B8 /* String.swift */; };
+		505D81692598EA0F001C8C62 /* IconAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505D81682598EA0F001C8C62 /* IconAPI.swift */; };
 		5085317E258E15A7002D58B2 /* BuyCoinsInterfaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5085317A258E15A7002D58B2 /* BuyCoinsInterfaces.swift */; };
 		5085317F258E15A7002D58B2 /* BuyCoinsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5085317B258E15A7002D58B2 /* BuyCoinsPresenter.swift */; };
 		50853180258E15A7002D58B2 /* BuyCoinsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5085317C258E15A7002D58B2 /* BuyCoinsViewController.swift */; };
@@ -46,7 +48,6 @@
 		5089EC302590DBBE002FEBE3 /* TransactionEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5089EC2F2590DBBE002FEBE3 /* TransactionEntity.swift */; };
 		5089EC4225923F1A002FEBE3 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5089EC4425923F1A002FEBE3 /* Localizable.strings */; };
 		5089EC5025924B6C002FEBE3 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 5089EC4F25924B6B002FEBE3 /* logo.png */; };
-		5089EC5625925352002FEBE3 /* UINavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5089EC5525925352002FEBE3 /* UINavigationController.swift */; };
 		50ADC1522576590A00D93C10 /* BaseWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50ADC1512576590A00D93C10 /* BaseWireframe.swift */; };
 		50ADC1542576592000D93C10 /* InteractorInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50ADC1532576592000D93C10 /* InteractorInterface.swift */; };
 		50ADC1562576593200D93C10 /* PresenterInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50ADC1552576593200D93C10 /* PresenterInterface.swift */; };
@@ -82,10 +83,12 @@
 		503D008E2583BB7A0007DA97 /* ThemeInitializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeInitializer.swift; sourceTree = "<group>"; };
 		503D00922583BBAC0007DA97 /* InitializerInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitializerInterface.swift; sourceTree = "<group>"; };
 		503D00952583BC1D0007DA97 /* MainNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigationController.swift; sourceTree = "<group>"; };
-		503D00982583BCE60007DA97 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		503D00A22583BEA40007DA97 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		503D00A62583C0B10007DA97 /* HomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenter.swift; sourceTree = "<group>"; };
 		503D00D2258B62470007DA97 /* MarketsBuyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketsBuyTableViewCell.swift; sourceTree = "<group>"; };
+		5052B93A2598F484004F70B8 /* DateSegmentControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateSegmentControl.swift; sourceTree = "<group>"; };
+		5052B93D2598F845004F70B8 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		505D81682598EA0F001C8C62 /* IconAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconAPI.swift; sourceTree = "<group>"; };
 		5085317A258E15A7002D58B2 /* BuyCoinsInterfaces.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyCoinsInterfaces.swift; sourceTree = "<group>"; };
 		5085317B258E15A7002D58B2 /* BuyCoinsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyCoinsPresenter.swift; sourceTree = "<group>"; };
 		5085317C258E15A7002D58B2 /* BuyCoinsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyCoinsViewController.swift; sourceTree = "<group>"; };
@@ -119,7 +122,6 @@
 		5089EC4725923F22002FEBE3 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		5089EC4825923F26002FEBE3 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		5089EC4F25924B6B002FEBE3 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
-		5089EC5525925352002FEBE3 /* UINavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigationController.swift; sourceTree = "<group>"; };
 		50ADC1512576590A00D93C10 /* BaseWireframe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseWireframe.swift; sourceTree = "<group>"; };
 		50ADC1532576592000D93C10 /* InteractorInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractorInterface.swift; sourceTree = "<group>"; };
 		50ADC1552576593200D93C10 /* PresenterInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresenterInterface.swift; sourceTree = "<group>"; };
@@ -170,6 +172,7 @@
 				5089EC00258F6F36002FEBE3 /* Alert.swift */,
 				5089EC0E258F76C6002FEBE3 /* Toast.swift */,
 				5089EC262590B140002FEBE3 /* CandleChart.swift */,
+				5052B93A2598F484004F70B8 /* DateSegmentControl.swift */,
 			);
 			path = ViewComponents;
 			sourceTree = "<group>";
@@ -187,7 +190,6 @@
 		5007F718256E90DB009EBD6C /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				5007F719256E90F5009EBD6C /* CACornerMask.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -221,6 +223,7 @@
 		5007F785257274BB009EBD6C /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				505D81672598E9E6001C8C62 /* Network */,
 				5089EC4D259248CF002FEBE3 /* Data */,
 				508531A8258F6AEA002D58B2 /* Storage */,
 				503D00A12583BE7D0007DA97 /* Extensions */,
@@ -304,7 +307,6 @@
 		503D008C2583BB370007DA97 /* Application */ = {
 			isa = PBXGroup;
 			children = (
-				503D00982583BCE60007DA97 /* Constants.swift */,
 				50CA6ED6256D2D890035B9B4 /* AppDelegate.swift */,
 				50CA6ED8256D2D890035B9B4 /* SceneDelegate.swift */,
 				503D008D2583BB5A0007DA97 /* Initializer */,
@@ -326,7 +328,8 @@
 			isa = PBXGroup;
 			children = (
 				503D00A22583BEA40007DA97 /* UIColor.swift */,
-				5089EC5525925352002FEBE3 /* UINavigationController.swift */,
+				5007F719256E90F5009EBD6C /* CACornerMask.swift */,
+				5052B93D2598F845004F70B8 /* String.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -339,6 +342,14 @@
 				5089EC19258FA405002FEBE3 /* MarketsSellTableViewCell.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		505D81672598E9E6001C8C62 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				505D81682598EA0F001C8C62 /* IconAPI.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 		508531A8258F6AEA002D58B2 /* Storage */ = {
@@ -607,13 +618,14 @@
 				50EC34122576904100CE70AA /* PortfolioInterfaces.swift in Sources */,
 				5089EC1A258FA405002FEBE3 /* MarketsSellTableViewCell.swift in Sources */,
 				503D00A32583BEA40007DA97 /* UIColor.swift in Sources */,
+				5052B93E2598F845004F70B8 /* String.swift in Sources */,
 				50EC341C2576906100CE70AA /* MarketsInterfaces.swift in Sources */,
+				505D81692598EA0F001C8C62 /* IconAPI.swift in Sources */,
 				5089EC2D2590DB8E002FEBE3 /* PortfolioTransactionCell.swift in Sources */,
 				50EC341E2576906100CE70AA /* MarketsViewController.swift in Sources */,
 				5089EC302590DBBE002FEBE3 /* TransactionEntity.swift in Sources */,
 				503D00932583BBAC0007DA97 /* InitializerInterface.swift in Sources */,
 				50EC34132576904100CE70AA /* PortfolioPresenter.swift in Sources */,
-				503D00992583BCE60007DA97 /* Constants.swift in Sources */,
 				5089EC17258F88D2002FEBE3 /* CoinBoughtEntity.swift in Sources */,
 				50EC341F2576906100CE70AA /* MarketsInteractor.swift in Sources */,
 				503D00A72583C0B10007DA97 /* HomePresenter.swift in Sources */,
@@ -624,11 +636,11 @@
 				50853193258E45E9002D58B2 /* LoadingView.swift in Sources */,
 				503D008F2583BB7A0007DA97 /* ThemeInitializer.swift in Sources */,
 				5085317F258E15A7002D58B2 /* BuyCoinsPresenter.swift in Sources */,
+				5052B93B2598F484004F70B8 /* DateSegmentControl.swift in Sources */,
 				50ADC15A2576596200D93C10 /* ViewInterface.swift in Sources */,
 				503D00852583B8800007DA97 /* HomeWireframe.swift in Sources */,
 				5007F717256E9097009EBD6C /* DesignableView.swift in Sources */,
 				50CA6ED7256D2D890035B9B4 /* AppDelegate.swift in Sources */,
-				5089EC5625925352002FEBE3 /* UINavigationController.swift in Sources */,
 				5007F71A256E90F5009EBD6C /* CACornerMask.swift in Sources */,
 				50ADC1582576595200D93C10 /* UIStoryboardExtension.swift in Sources */,
 				50853188258E15B5002D58B2 /* SellCoinsPresenter.swift in Sources */,

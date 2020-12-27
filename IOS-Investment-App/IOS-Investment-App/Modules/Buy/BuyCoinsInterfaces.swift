@@ -38,6 +38,6 @@ protocol BuyCoinsPresenterInterface: PresenterInterface {
 protocol BuyCoinsInteractorInterface: PresenterInterface {
     func getCoinInfosFromApi(for coinId: String, storeCoin: @escaping (CoinStocksEntity) -> Void)
     func getCoinOhlcvFromApi(for coinId: String, from date: Date, storeCoinOhlvc: @escaping (CoinStocksEntity) -> Void)
-    func getConvertionRateFromApi(for coinId: String, usdAmount: Int, convertionCallBack: @escaping (String, Int, Float) -> Void)
-    func buyCoin(coinId: String, coinAmount: Float, usdAmount: Int) -> Bool
+    func getConvertionRateFromApi(for coinId: String, usdAmount: Int, convertionCallBack: @escaping (String, Int, Float, Float) -> Void)
+    func buyCoin(coinId: String, coinAmount: Float, usdAmount: Int, boughtPrice: Float) -> Bool
 }

@@ -21,9 +21,9 @@ class Storage {
         case transactions = "Transactions"
     }
     
-    static func addTransaction(coinId: String, usdProfits: Float, name: String, iconData: Data?) -> Bool {
+    static func addTransaction(coinId: String, usdProfits: Float, symbol: String, iconData: Data?) -> Bool {
         var transactions = getTransations()
-        let transaction = TransactionEntity(coinId: coinId, usdProfits: usdProfits, name: name, iconData: iconData)
+        let transaction = TransactionEntity(coinId: coinId, usdProfits: usdProfits, symbol: symbol)
         
         transactions.append(transaction)
         
@@ -89,20 +89,22 @@ class Storage {
         return false
     }
     
-    static func buyCoin(coinId: String, coinAmount: Float, usdAmount: Int) -> Bool {
+    static func buyCoin(coinId: String, coinAmount: Float, usdAmount: Int, boughtPrice: Float) -> Bool {
         guard substarctMoneyToWallet(amount: usdAmount) else { return false }
         
         var coinsBoughtMap = getBoughtCoins()
         var coinAmountToStore = coinAmount
         var usdAmountToStore = usdAmount
+        var boughtPrice = boughtPrice
 
         if coinsBoughtMap.contains(where: {$0.id == coinId}) {
             coinAmountToStore += (coinsBoughtMap.first(where: {$0.id == coinId}))!.amount
             usdAmountToStore += (coinsBoughtMap.first(where: {$0.id == coinId}))!.usdAmount
+            boughtPrice = (coinsBoughtMap.first(where: {$0.id == coinId}))!.boughtPrice
             coinsBoughtMap.removeAll(where: {$0.id == coinId})
         }
         
-        let coinBought = CoinBoughtEntity(id: coinId, amount: coinAmountToStore, usdAmount: usdAmountToStore)
+        let coinBought = CoinBoughtEntity(id: coinId, amount: coinAmountToStore, usdAmount: usdAmountToStore, boughtPrice: boughtPrice)
         coinsBoughtMap.append(coinBought)
         
         if let coinBoughtEncoded = try? encoder.encode(coinsBoughtMap) {

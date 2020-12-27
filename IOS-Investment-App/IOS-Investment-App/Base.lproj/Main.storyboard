@@ -265,7 +265,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WhB-uc-6hb" customClass="DesignableView" customModule="IOS_Investment_App" customModuleProvider="target">
                                 <rect key="frame" x="30" y="165" width="354" height="280"/>
                                 <subviews>
-                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="iUO-fv-t6K">
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="iUO-fv-t6K" customClass="DateSegmentControl" customModule="IOS_Investment_App" customModuleProvider="target">
                                         <rect key="frame" x="5" y="8" width="344" height="32"/>
                                         <segments>
                                             <segment title="1 Hour"/>
@@ -354,7 +354,7 @@
                         <outlet property="ChartViewContainer" destination="WhB-uc-6hb" id="XlO-CO-i96"/>
                         <outlet property="coinPriceTitleLabel" destination="yEX-bb-7eX" id="qh8-9v-Uf6"/>
                         <outlet property="coinPriceValueLabel" destination="mEB-1P-jz6" id="sFG-Qp-Kq4"/>
-                        <outlet property="dateTimeStockValueSegment" destination="iUO-fv-t6K" id="Zgs-AK-EfI"/>
+                        <outlet property="dateTimeStockValueSegment" destination="iUO-fv-t6K" id="64q-1E-xfd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="23F-UY-nUr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -655,7 +655,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DVL-bu-tJS" customClass="DesignableView" customModule="IOS_Investment_App" customModuleProvider="target">
                                 <rect key="frame" x="30" y="165" width="354" height="280"/>
                                 <subviews>
-                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="8Pb-xE-cpU">
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="8Pb-xE-cpU" customClass="DateSegmentControl" customModule="IOS_Investment_App" customModuleProvider="target">
                                         <rect key="frame" x="51.5" y="8" width="251" height="32"/>
                                         <segments>
                                             <segment title="1 Hour"/>
@@ -690,7 +690,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wdj-tX-stw" customClass="DesignableView" customModule="IOS_Investment_App" customModuleProvider="target">
-                                <rect key="frame" x="30" y="475" width="354" height="100"/>
+                                <rect key="frame" x="30" y="475" width="354" height="150"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nan" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nR3-hu-SoG">
                                         <rect key="frame" x="141" y="20" width="205" height="21"/>
@@ -699,13 +699,13 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Profits" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="veH-Ca-Fft">
-                                        <rect key="frame" x="8" y="71" width="50" height="21"/>
+                                        <rect key="frame" x="8" y="64.5" width="50" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NaN" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o6q-rh-WmW">
-                                        <rect key="frame" x="126" y="71" width="220" height="21"/>
+                                        <rect key="frame" x="126" y="64.5" width="220" height="21"/>
                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -716,18 +716,36 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Purchase price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lik-if-huX">
+                                        <rect key="frame" x="8" y="109" width="114" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NaN" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e6Q-FR-E5J">
+                                        <rect key="frame" x="172" y="109" width="174" height="21"/>
+                                        <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstItem="nR3-hu-SoG" firstAttribute="leading" secondItem="3Jh-cw-RGT" secondAttribute="trailing" constant="13" id="2UO-te-rJD"/>
                                     <constraint firstAttribute="trailing" secondItem="o6q-rh-WmW" secondAttribute="trailing" constant="8" id="3g7-fk-P7a"/>
-                                    <constraint firstAttribute="height" constant="100" id="5P7-eB-IDc"/>
-                                    <constraint firstAttribute="bottom" secondItem="veH-Ca-Fft" secondAttribute="bottom" constant="8" id="ECV-9b-0cr"/>
+                                    <constraint firstAttribute="height" constant="150" id="5P7-eB-IDc"/>
+                                    <constraint firstItem="o6q-rh-WmW" firstAttribute="centerY" secondItem="wdj-tX-stw" secondAttribute="centerY" id="5ms-Rs-Z16"/>
+                                    <constraint firstItem="lik-if-huX" firstAttribute="leading" secondItem="wdj-tX-stw" secondAttribute="leading" constant="8" id="7tJ-Dp-gUi"/>
                                     <constraint firstItem="3Jh-cw-RGT" firstAttribute="leading" secondItem="wdj-tX-stw" secondAttribute="leading" constant="8" id="FxK-rL-s6H"/>
                                     <constraint firstItem="nR3-hu-SoG" firstAttribute="top" secondItem="wdj-tX-stw" secondAttribute="top" constant="20" symbolic="YES" id="IMf-Xr-xTd"/>
+                                    <constraint firstAttribute="trailing" secondItem="e6Q-FR-E5J" secondAttribute="trailing" constant="8" id="Juk-bQ-GbK"/>
                                     <constraint firstItem="o6q-rh-WmW" firstAttribute="leading" secondItem="veH-Ca-Fft" secondAttribute="trailing" constant="68" id="Mte-wk-pbk"/>
-                                    <constraint firstItem="o6q-rh-WmW" firstAttribute="top" secondItem="nR3-hu-SoG" secondAttribute="bottom" constant="30" id="cBz-QD-Apw"/>
+                                    <constraint firstAttribute="bottom" secondItem="lik-if-huX" secondAttribute="bottom" constant="20" symbolic="YES" id="P3o-HI-yuP"/>
+                                    <constraint firstAttribute="bottom" secondItem="e6Q-FR-E5J" secondAttribute="bottom" constant="20" symbolic="YES" id="Pr8-ob-f5i"/>
+                                    <constraint firstItem="e6Q-FR-E5J" firstAttribute="leading" secondItem="lik-if-huX" secondAttribute="trailing" constant="50" id="ZY6-t6-KLO"/>
                                     <constraint firstAttribute="trailing" secondItem="nR3-hu-SoG" secondAttribute="trailing" constant="8" id="gcI-Sr-guS"/>
+                                    <constraint firstItem="veH-Ca-Fft" firstAttribute="centerY" secondItem="wdj-tX-stw" secondAttribute="centerY" id="jSJ-wx-thB"/>
                                     <constraint firstItem="3Jh-cw-RGT" firstAttribute="top" secondItem="wdj-tX-stw" secondAttribute="top" constant="20" symbolic="YES" id="nRu-Hq-AUZ"/>
                                     <constraint firstItem="veH-Ca-Fft" firstAttribute="leading" secondItem="wdj-tX-stw" secondAttribute="leading" constant="8" id="pGn-Jp-WDR"/>
                                 </constraints>
@@ -750,7 +768,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yfy-F3-n18" customClass="DesignableButton" customModule="IOS_Investment_App" customModuleProvider="target">
-                                <rect key="frame" x="30" y="605" width="354" height="30"/>
+                                <rect key="frame" x="30" y="655" width="354" height="30"/>
                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="eJb-Ep-bsJ"/>
@@ -795,7 +813,8 @@
                     <connections>
                         <outlet property="chartViewContainer" destination="DVL-bu-tJS" id="M21-oZ-yF9"/>
                         <outlet property="coinTitleLabel" destination="yko-Ex-lt1" id="lZz-Mf-USs"/>
-                        <outlet property="dateTimeStockValueSegment" destination="8Pb-xE-cpU" id="R4R-AI-y3p"/>
+                        <outlet property="dateTimeStockValueSegment" destination="8Pb-xE-cpU" id="Duz-eW-Iyp"/>
+                        <outlet property="purchasePriceLabel" destination="e6Q-FR-E5J" id="Fxk-VI-49I"/>
                         <outlet property="usdAmountBoughtLabel" destination="nR3-hu-SoG" id="263-Nt-cVJ"/>
                         <outlet property="usdAmountLabel" destination="bXQ-Vu-gbg" id="kVc-uR-Ie7"/>
                         <outlet property="usdProfitsLabel" destination="o6q-rh-WmW" id="s1c-RT-0ZH"/>

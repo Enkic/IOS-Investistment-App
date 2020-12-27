@@ -20,8 +20,8 @@ final class BuyCoinsViewController: UIViewController {
 
     @IBOutlet weak var coinPriceTitleLabel: DesignableLabel!
     @IBOutlet weak var coinPriceValueLabel: UILabel!
-    @IBOutlet weak var dateTimeStockValueSegment: UISegmentedControl!
-
+    @IBOutlet weak var dateTimeStockValueSegment: DateSegmentControl!
+    
     @IBOutlet weak var BuyAmountTextField: UITextField!
     @IBOutlet weak var BuyButton: DesignableButton!
     @IBOutlet weak var ChartViewContainer: DesignableView!
@@ -35,7 +35,7 @@ final class BuyCoinsViewController: UIViewController {
         super.viewDidLoad()
         
         presenter.getCoinInfos()
-        let ohlcvFromDate = getOhlcvDateFromSegment()
+        let ohlcvFromDate = dateTimeStockValueSegment.getSelectedDate()
         presenter.getCoinOhlcv(from: ohlcvFromDate)
         
         dateTimeStockValueSegment.addTarget(self, action: #selector(BuyCoinsViewController.segmentedControlValueChanged(_:)), for: .valueChanged)
@@ -74,28 +74,9 @@ final class BuyCoinsViewController: UIViewController {
         axisFormatDelegate = chartView
     }
     
-    func getOhlcvDateFromSegment() -> Date {
-        var date: Date = Date(timeIntervalSince1970: 0)
-        
-        switch dateTimeStockValueSegment.selectedSegmentIndex {
-        case 0:
-            date = (Calendar.current.date(byAdding: .hour, value: -1, to: Date())!)
-        case 1:
-            date = (Calendar.current.date(byAdding: .day, value: -1, to: Date()) ?? Date())
-        case 2:
-            date = (Calendar.current.date(byAdding: .weekday, value: -1, to: Date()) ?? Date())
-        case 3:
-            date = (Calendar.current.date(byAdding: .month, value: -1, to: Date()) ?? Date())
-        default:
-            break
-        }
-                
-        return date
-    }
-    
     @objc func segmentedControlValueChanged(_ sender:UISegmentedControl!) {
         
-        let ohlcvFromDate = getOhlcvDateFromSegment()
+        let ohlcvFromDate = dateTimeStockValueSegment.getSelectedDate()
         presenter.getCoinOhlcv(from: ohlcvFromDate)
 
         switch dateTimeStockValueSegment.selectedSegmentIndex {
@@ -137,7 +118,7 @@ extension BuyCoinsViewController: BuyCoinsViewInterface {
         let floatPrice = Float(truncating: coinInfos[.usd].price as NSNumber)
 
         coinPriceTitleLabel.text = Bundle.main.localizedString(forKey: "priceOf", value: "Price of", table: "Localizable") + " " + coinInfos.name
-        coinPriceValueLabel.text = String(format: "%.2f", floatPrice) + " $"
+        coinPriceValueLabel.text = String.formatToDollar(price: floatPrice)
     }
     
     func updateCoinView(coinOhlcv: [Ohlcv]) {

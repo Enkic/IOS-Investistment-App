@@ -14,23 +14,18 @@ import Coinpaprika
 final class PortfolioInteractor {
     var presenter: PortfolioPresenterInterface!
     
-    let iconesUrl = "https://cryptoicons.org/api/icon/"
-    let iconeSizeUrl = "/32"
+    let iconApi = IconAPI()
 
-    func getCryptoIcon(coinSymbol: String) -> Data? {
-
-        let url = iconesUrl + coinSymbol.lowercased() + iconeSizeUrl
-        guard let urlEncoded = URL(string: url) else { return nil }
-        guard let imageData = try? Data(contentsOf: urlEncoded) else { return nil }
-        
-        return imageData
-    }
-    
 }
 
 // MARK: - Extensions -
 
 extension PortfolioInteractor: PortfolioInteractorInterface {
+    
+    func getCryptoIcon(coinSymbol: String) -> UIImage? {
+        
+        return iconApi.getIcon(withSymbolName: coinSymbol)
+    }
     
     func getBoughtCoinsInfosFromApi(storeCoins: @escaping (_ coins: [CoinBoughtEntity]) -> Void) {
         var coinsBought = Storage.getBoughtCoins()
@@ -49,7 +44,6 @@ extension PortfolioInteractor: PortfolioInteractorInterface {
                     
                     coinsBought[i].symbol = ticker.symbol
                     coinsBought[i].profits = coinDiffUsd
-                    coinsBought[i].iconData = self.getCryptoIcon(coinSymbol: coinsBought[i].symbol!)
                     
                     // Tmp update the view each time we get a new coin infos
                     storeCoins(coinsBought)

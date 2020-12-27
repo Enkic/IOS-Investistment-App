@@ -41,7 +41,6 @@ extension SellCoinsInteractor: SellCoinsInteractorInterface {
                 
                 coinBought?.symbol = ticker.symbol
                 coinBought?.profits = coinDiffUsd
-                coinBought?.iconData = self.getCryptoIcon(cryptoSymbol: ticker.symbol)
 
                 
                 storeCoin(coinBought!)

@@ -9,10 +9,10 @@
 import Foundation
 
 struct CoinBoughtEntity: Codable {
-    var id: String
-    var amount: Float
-    var usdAmount: Int
+    let id: String
+    let amount: Float
+    let usdAmount: Int
+    let boughtPrice: Float
     var symbol: String?
     var profits: Float?
-    var iconData: Data?
 }

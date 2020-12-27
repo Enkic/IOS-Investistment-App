@@ -11,6 +11,5 @@ import UIKit
 struct TransactionEntity: Codable {
     let coinId: String
     let usdProfits: Float
-    let name: String
-    let iconData: Data?
+    let symbol: String
 }

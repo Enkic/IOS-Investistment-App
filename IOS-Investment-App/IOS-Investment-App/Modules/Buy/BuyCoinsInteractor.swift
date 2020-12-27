@@ -17,21 +17,22 @@ class BuyCoinsInteractor {
 
 extension BuyCoinsInteractor: BuyCoinsInteractorInterface {
 
-    func getConvertionRateFromApi(for coinId: String, usdAmount: Int, convertionCallBack: @escaping (String, Int, Float) -> Void) {
+    func getConvertionRateFromApi(for coinId: String, usdAmount: Int, convertionCallBack: @escaping (String, Int, Float, Float) -> Void) {
         Coinpaprika.API.ticker(id: coinId, quotes: [.usd]).perform { (response) in
             switch response {
               case .success(let ticker):
                 let convertionRate = Float(truncating: 1 / ticker[.usd].price as NSNumber)
-                convertionCallBack(coinId, usdAmount, convertionRate)
+                let price = ticker[.usd].price
+                convertionCallBack(coinId, usdAmount, convertionRate, Float(truncating: price as NSNumber))
             case .failure(_):
                 break
             }
         }
     }
     
-    func buyCoin(coinId: String, coinAmount: Float, usdAmount: Int) -> Bool {
+    func buyCoin(coinId: String, coinAmount: Float, usdAmount: Int, boughtPrice: Float) -> Bool {
         
-        return Storage.buyCoin(coinId: coinId, coinAmount: coinAmount, usdAmount: usdAmount)
+        return Storage.buyCoin(coinId: coinId, coinAmount: coinAmount, usdAmount: usdAmount, boughtPrice: boughtPrice)
     }
 
 

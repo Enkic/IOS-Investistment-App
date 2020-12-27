@@ -29,10 +29,10 @@ final class BuyCoinsPresenter {
         self.coinId = coinId
     }
     
-    func didGetCoinRate(coinId: String, usdAmount: Int, convertionRate: Float) {
+    func didGetCoinRate(coinId: String, usdAmount: Int, convertionRate: Float, boughtPrice: Float) {
         let coinAmount = Float(usdAmount) * convertionRate
         
-        let state = interactor.buyCoin(coinId: coinId, coinAmount: coinAmount, usdAmount: usdAmount)
+        let state = interactor.buyCoin(coinId: coinId, coinAmount: coinAmount, usdAmount: usdAmount, boughtPrice: boughtPrice)
         didBuyCoin(success: state)
     }
 }

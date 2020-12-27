@@ -14,8 +14,8 @@ final class MarketsViewController: UIViewController {
 
     // MARK: - Public properties -
 
-    @IBOutlet weak var BuyTableView: UITableView!
-    @IBOutlet weak var SellTableView: UITableView!
+    @IBOutlet weak private var BuyTableView: UITableView!
+    @IBOutlet weak private var SellTableView: UITableView!
     var presenter: MarketsPresenterInterface!
     
     var coins: [CoinEntity] = []
@@ -126,23 +126,26 @@ extension MarketsViewController: UITableViewDelegate, UITableViewDataSource {
         
         return 0
     }
-    
+        
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+
         if tableView.accessibilityIdentifier == "Buy" {
             let cell = tableView.dequeueReusableCell(withIdentifier: "MarketBuyCell", for: indexPath) as! MarketsBuyTableViewCell
+            let coinSymbol = coins[indexPath.row].symbol ?? "NaN"
             
-            cell.cryptoIcon.image = UIImage(data: coins[indexPath.row].iconData ?? Data())
-            cell.cryptoName.text = coins[indexPath.row].symbol ?? "NaN"
-            cell.cryptoValue.text = String(format: "%.2f", coins[indexPath.row].usdPrice!) + " $"
+            cell.cryptoIcon.image = presenter.getCryptoIcon(coinSymbol: coinSymbol)
+            cell.cryptoName.text = coinSymbol
+            cell.cryptoValue.text = String.formatToDollar(price: coins[indexPath.row].usdPrice!)
             cell.coinId = coins[indexPath.row].id
             
             return cell
         } else if tableView.accessibilityIdentifier == "Sell"  {
             let cell = tableView.dequeueReusableCell(withIdentifier: "MarketSellCell", for: indexPath) as! MarketsSellTableViewCell
+            let coinSymbol = boughtCoins[indexPath.row].symbol ?? "NaN"
             
-            cell.coinImage.image = UIImage(data: boughtCoins[indexPath.row].iconData ?? Data())
+            cell.coinImage.image = presenter.getCryptoIcon(coinSymbol: coinSymbol)
             cell.coinNameLabel.text = boughtCoins[indexPath.row].symbol
-            cell.coinProfitsAmountLabel.text = String(format: "%.1f", boughtCoins[indexPath.row].profits ?? 0) + " $"
+            cell.coinProfitsAmountLabel.text = String.formatToDollar(price: boughtCoins[indexPath.row].profits ?? 0)
 
             if (boughtCoins[indexPath.row].profits ?? 0) <= -0.1 {
                 cell.coinProfitsAmountLabel.textColor = .systemRed

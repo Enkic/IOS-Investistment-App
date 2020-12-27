@@ -17,19 +17,9 @@ final class MarketsInteractor {
     
     var presenter: MarketsPresenterInterface!
 
-    let iconesUrl = "https://cryptoicons.org/api/icon/"
-    let iconeSizeUrl = "/32"
+    let iconApi = IconAPI()
 
     var coins: [CoinEntity]!
-    
-    func getCryptoIcon(cryptoName: String) -> Data? {
-
-        let url = iconesUrl + cryptoName.lowercased() + iconeSizeUrl
-        guard let urlEncoded = URL(string: url) else { return nil }
-        guard let imageData = try? Data(contentsOf: urlEncoded) else { return nil }
-        
-        return imageData
-    }
     
     func castCoinsToCoinsEntity(coins: [Ticker], maxRange: Int) -> [CoinEntity] {
         var coinsCopy: [CoinEntity] = []
@@ -54,9 +44,9 @@ final class MarketsInteractor {
 
 extension MarketsInteractor: MarketsInteractorInterface {
     
-    func getCryptoIcon(coinSymbol: String) -> Data? {
+    func getCryptoIcon(coinSymbol: String) -> UIImage? {
         
-        return getCryptoIcon(cryptoName: coinSymbol)
+        return iconApi.getIcon(withSymbolName: coinSymbol)
     }
     
     func fetchBoughtCoins(storeCoins: @escaping ([CoinBoughtEntity]) -> Void) {
@@ -76,7 +66,6 @@ extension MarketsInteractor: MarketsInteractorInterface {
                     
                     coinsBought[i].symbol = ticker.symbol
                     coinsBought[i].profits = coinDiffUsd
-                    coinsBought[i].iconData = self.getCryptoIcon(coinSymbol: coinsBought[i].symbol!)
                     
                     // Tmp update the view each time we get a new coin infos
                     storeCoins(coinsBought)

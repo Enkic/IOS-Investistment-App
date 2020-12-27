@@ -34,7 +34,7 @@ final class SellCoinsPresenter {
         let transactionState = Storage.sellCoin(coinId: coinId, usdAmount: Int(Float(coin.usdAmount) + coin.profits!))
         let iconData = interactor.getCryptoIcon(cryptoSymbol: coin.symbol!)
         
-        _ = Storage.addTransaction(coinId: coinId, usdProfits: coin.profits!, name: coin.symbol! ,iconData: iconData)
+        _ = Storage.addTransaction(coinId: coinId, usdProfits: coin.profits!, symbol: coin.symbol! ,iconData: iconData)
         sellCoinCallBack(success: transactionState)
     }
 }

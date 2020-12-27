@@ -14,9 +14,9 @@ final class PortfolioViewController: UIViewController {
 
     // MARK: - Public properties -
 
-    @IBOutlet weak var transactionsCollectionView: UICollectionView!
-    @IBOutlet weak var currentInvestmentsTableView: UITableView!
-    @IBOutlet weak var walletBalanceLabel: UILabel!
+    @IBOutlet weak private var transactionsCollectionView: UICollectionView!
+    @IBOutlet weak private var currentInvestmentsTableView: UITableView!
+    @IBOutlet weak private var walletBalanceLabel: UILabel!
     var presenter: PortfolioPresenterInterface!
     
     var coins: [CoinBoughtEntity] = []
@@ -35,8 +35,8 @@ final class PortfolioViewController: UIViewController {
         transactionsCollectionView.dataSource = self
         currentInvestmentsTableView.delegate = self
         currentInvestmentsTableView.dataSource = self
-        
-        walletBalanceLabel.text = presenter.getMoneyWallet() + " $"
+                
+        walletBalanceLabel.text = String.formatToDollar(price: presenter.getMoneyWallet())
         
         presenter.getTransactions()
         presenter.getBoughtCoinsInfos()
@@ -107,7 +107,7 @@ extension PortfolioViewController: PortfolioViewInterface {
     func storeMoneyWalletCallback(success: Bool, walletBalance: Int) {
         if success {
             Toast.show(message: "You now have \(walletBalance) $ on your wallet", controller: self, type: "success", toastDuration: 2)
-            walletBalanceLabel.text = String(walletBalance) + "$"
+            walletBalanceLabel.text = String.formatToDollar(price: walletBalance)
         } else {
             Toast.show(message: "Invalid amount", controller: self, type: "danger", toastDuration: 2)
         }
@@ -126,9 +126,9 @@ extension PortfolioViewController: UITableViewDelegate, UITableViewDataSource {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "CurrentInvestmentsCell", for: indexPath) as? PortfolioCurrentInvestmentsCell {
             
             cell.coinNameLabel.text = coins[indexPath.row].symbol
-            cell.coinImage.image = UIImage(data: coins[indexPath.row].iconData ?? Data())
+            cell.coinImage.image = presenter.getCryptoIcon(coinSymbol: coins[indexPath.row].symbol ?? "")
             if coins[indexPath.row].profits != nil {
-                cell.coinExchangeValueLabel.text = String(format: "%.1f", coins[indexPath.row].profits!) + " $"
+                cell.coinExchangeValueLabel.text = String.formatToDollar(price: coins[indexPath.row].profits!)
                 
                 if coins[indexPath.row].profits! <= -0.1 {
                     cell.coinExchangeValueLabel.textColor = .systemRed
@@ -160,9 +160,9 @@ extension PortfolioViewController: UICollectionViewDelegate, UICollectionViewDat
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let cell = transactionsCollectionView.dequeueReusableCell(withReuseIdentifier: "TransactionsCell", for: indexPath) as? PortfolioTransactionCell {
             
-            cell.coinImage.image = UIImage(data: transactionCoins[indexPath.row].iconData ?? Data())
-            cell.coinNameLabel.text = transactionCoins[indexPath.row].name
-            cell.profitsLabel.text = String(format: "%.1f", transactionCoins[indexPath.row].usdProfits) + " $"
+            cell.coinImage.image = presenter.getCryptoIcon(coinSymbol: transactionCoins[indexPath.row].symbol)
+            cell.coinNameLabel.text = transactionCoins[indexPath.row].symbol
+            cell.profitsLabel.text = String.formatToDollar(price: transactionCoins[indexPath.row].usdProfits)
             if transactionCoins[indexPath.row].usdProfits <= -0.1 {
                 cell.profitsLabel.textColor = .systemRed
             } else if transactionCoins[indexPath.row].usdProfits >= 0.1 {
