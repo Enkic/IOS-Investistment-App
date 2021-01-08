@@ -456,12 +456,12 @@
 		50CA6ECA256D2D890035B9B4 = {
 			isa = PBXGroup;
 			children = (
+				50CA6EEA256D39EE0035B9B4 /* .gitignore */,
 				50CA6ED5256D2D890035B9B4 /* IOS-Investment-App */,
 				50E40C7C25A62206005CF9AF /* IOS-Investment-AppTests */,
 				50CA6ED4256D2D890035B9B4 /* Products */,
 				F8880F79410F59BF423A42A9 /* Pods */,
 				E31084B7A685C5E45BEBAC83 /* Frameworks */,
-				50CA6EEA256D39EE0035B9B4 /* .gitignore */,
 			);
 			sourceTree = "<group>";
 		};
