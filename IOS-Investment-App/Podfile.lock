@@ -9,18 +9,23 @@ PODS:
     - CoinpaprikaAPI/Networking
   - CoinpaprikaAPI/Networking (2.2)
   - lottie-ios (3.1.9)
+  - SDWebImage (5.10.2):
+    - SDWebImage/Core (= 5.10.2)
+  - SDWebImage/Core (5.10.2)
 
 DEPENDENCIES:
   - Alamofire (from `https://github.com/Alamofire/Alamofire.git`, branch `alamofire5`)
   - Charts
   - CoinpaprikaAPI
   - lottie-ios (~> 3.1.8)
+  - SDWebImage (~> 5.0)
 
 SPEC REPOS:
   trunk:
     - Charts
     - CoinpaprikaAPI
     - lottie-ios
+    - SDWebImage
 
 EXTERNAL SOURCES:
   Alamofire:
@@ -37,7 +42,8 @@ SPEC CHECKSUMS:
   Charts: b1e3a1f5a1c9ba5394438ca3b91bd8c9076310af
   CoinpaprikaAPI: 30093dd2ece7d8ecea8c0d8671f704e7a6095f0b
   lottie-ios: 3a3758ef5a008e762faec9c9d50a39842f26d124
+  SDWebImage: b969dcfc02c40a5da71eac0b03b8f1a0c794a86f
 
-PODFILE CHECKSUM: 8ee268ea0934391f5957114c5fbbaeb9007a5d66
+PODFILE CHECKSUM: 81dc62527ddb2b125f5381a8dc74f84232c0c64f
 
 COCOAPODS: 1.9.3

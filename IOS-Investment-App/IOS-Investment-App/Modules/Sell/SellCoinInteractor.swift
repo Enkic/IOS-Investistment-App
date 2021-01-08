@@ -37,13 +37,11 @@ extension SellCoinsInteractor: SellCoinsInteractorInterface {
         Coinpaprika.API.ticker(id: coinId, quotes: [.usd]).perform { (response) in
             switch response {
               case .success(let ticker):
-                let coinAmountValue = Float(truncating: (Decimal(coinBought!.usdAmount)) / ticker[.usd].price as NSNumber)
-                let coinDiff = coinAmountValue - coinBought!.amount
-                let coinDiffUsd = coinDiff * Float(truncating: 1 / ticker[.usd].price as NSNumber)
-                
-                coinBought?.symbol = ticker.symbol
-                coinBought?.profits = coinDiffUsd
+                let valueUsd = Float(truncating: ticker[.usd].price as NSNumber) * coinBought!.amount
+                let boughtValueUsd = coinBought!.boughtPrice * coinBought!.amount
 
+                coinBought?.symbol = ticker.symbol
+                coinBought?.profits = valueUsd - boughtValueUsd
                 
                 storeCoin(coinBought!)
                 case .failure(_):

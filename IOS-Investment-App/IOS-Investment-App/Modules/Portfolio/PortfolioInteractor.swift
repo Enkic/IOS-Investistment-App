@@ -23,11 +23,6 @@ final class PortfolioInteractor {
 
 extension PortfolioInteractor: PortfolioInteractorInterface {
     
-    func getCryptoIcon(coinSymbol: String) -> UIImage? {
-        
-        return iconApi.getIcon(withSymbolName: coinSymbol)
-    }
-    
     func getBoughtCoinsInfosFromApi(storeCoins: @escaping (_ coins: [CoinBoughtEntity]) -> Void) {
         var coinsBought = store.getBoughtCoins()
         
@@ -39,14 +34,12 @@ extension PortfolioInteractor: PortfolioInteractorInterface {
             Coinpaprika.API.ticker(id: coinsBought[i].id, quotes: [.usd]).perform { (response) in
                 switch response {
                   case .success(let ticker):
-                    let coinAmountValue = Float(truncating: (Decimal(coinsBought[i].usdAmount)) / ticker[.usd].price as NSNumber)
-                    let coinDiff = coinAmountValue - coinsBought[i].amount
-                    let coinDiffUsd = coinDiff * Float(truncating: 1 / ticker[.usd].price as NSNumber)
-                    
+                    let valueUsd = Float(truncating: ticker[.usd].price as NSNumber) * coinsBought[i].amount
+                    let boughtValueUsd = coinsBought[i].boughtPrice * coinsBought[i].amount
+
                     coinsBought[i].symbol = ticker.symbol
-                    coinsBought[i].profits = coinDiffUsd
-                    
-                    // Tmp update the view each time we get a new coin infos
+                    coinsBought[i].profits = valueUsd - boughtValueUsd
+
                     storeCoins(coinsBought)
                     case .failure(_):
                     break

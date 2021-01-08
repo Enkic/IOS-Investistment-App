@@ -31,12 +31,7 @@ final class PortfolioPresenter {
 // MARK: - Extensions -
 
 extension PortfolioPresenter: PortfolioPresenterInterface {
-    
-    func getCryptoIcon(coinSymbol: String) -> UIImage? {
-        
-        return interactor.getCryptoIcon(coinSymbol: coinSymbol)
-    }
-    
+
     func getBoughtCoinsInfos() {
         interactor.getBoughtCoinsInfosFromApi(storeCoins: didGetBoughtCoinsInfos(coins:))
     }

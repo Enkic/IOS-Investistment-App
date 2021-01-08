@@ -9,6 +9,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 final class PortfolioViewController: UIViewController {
 
@@ -23,6 +24,8 @@ final class PortfolioViewController: UIViewController {
     var transactionCoins: [TransactionEntity] = []
     
     var loadingViewCurrentInvestments: LoadingView?
+    
+    let iconApi = IconAPI()
 
     // MARK: - Lifecycle -
 
@@ -126,7 +129,7 @@ extension PortfolioViewController: UITableViewDelegate, UITableViewDataSource {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "CurrentInvestmentsCell", for: indexPath) as? PortfolioCurrentInvestmentsCell {
             
             cell.coinNameLabel.text = coins[indexPath.row].symbol
-            cell.coinImage.image = presenter.getCryptoIcon(coinSymbol: coins[indexPath.row].symbol ?? "")
+            cell.coinImage.sd_setImage(with: iconApi.getUrlIcon(for: coins[indexPath.row].symbol ?? ""), completed: nil)
             if coins[indexPath.row].profits != nil {
                 cell.coinExchangeValueLabel.text = String.formatToDollar(price: coins[indexPath.row].profits!)
                 
@@ -160,9 +163,9 @@ extension PortfolioViewController: UICollectionViewDelegate, UICollectionViewDat
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let cell = transactionsCollectionView.dequeueReusableCell(withReuseIdentifier: "TransactionsCell", for: indexPath) as? PortfolioTransactionCell {
             
-            cell.coinImage.image = presenter.getCryptoIcon(coinSymbol: transactionCoins[indexPath.row].symbol)
+            cell.coinImage.sd_setImage(with: iconApi.getUrlIcon(for: transactionCoins[indexPath.row].symbol), completed: nil)
             cell.coinNameLabel.text = transactionCoins[indexPath.row].symbol
-            cell.profitsLabel.text = String.formatToDollar(price: transactionCoins[indexPath.row].usdProfits)
+            cell.profitsLabel.text = "+ " + String.formatToDollar(price: transactionCoins[indexPath.row].usdProfits)
             if transactionCoins[indexPath.row].usdProfits <= -0.1 {
                 cell.profitsLabel.textColor = .systemRed
             } else if transactionCoins[indexPath.row].usdProfits >= 0.1 {

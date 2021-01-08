@@ -371,6 +371,7 @@
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Portfolio balance" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l8w-fk-Fni" customClass="DesignableLabel" customModule="IOS_Investment_App" customModuleProvider="target">
                                 <rect key="frame" x="30" y="74" width="129" height="21"/>
+                                <accessibility key="accessibilityConfiguration" identifier="PortfolioBalanceLabel"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" systemColor="systemGrayColor"/>
                                 <nil key="highlightedColor"/>
@@ -577,7 +578,7 @@
                                     <constraint firstAttribute="height" constant="40" id="bxZ-nC-PK7"/>
                                     <constraint firstAttribute="width" constant="40" id="lEC-7J-FL3"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="30"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="+"/>
                                 <userDefinedRuntimeAttributes>
@@ -592,6 +593,7 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="cAJ-DQ-1rx"/>
                         <color key="backgroundColor" systemColor="systemGray6Color"/>
+                        <accessibility key="accessibilityConfiguration" identifier="PortfolioBalanceLabel"/>
                         <constraints>
                             <constraint firstItem="PRU-3f-I3P" firstAttribute="leading" secondItem="cAJ-DQ-1rx" secondAttribute="leading" constant="30" id="3qH-q0-Wcb"/>
                             <constraint firstItem="cAJ-DQ-1rx" firstAttribute="trailing" secondItem="9tC-59-BJg" secondAttribute="trailing" constant="30" id="61b-lL-KQs"/>

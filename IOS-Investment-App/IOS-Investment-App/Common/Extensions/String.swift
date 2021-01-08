@@ -30,6 +30,7 @@ extension String {
         
         let formatter = NumberFormatter()
         formatter.numberStyle = .currency
+        formatter.currencySymbol = "$"
         let str = formatter.string(from: NSNumberPrice)
 
         return str ?? NSNumberPrice.stringValue

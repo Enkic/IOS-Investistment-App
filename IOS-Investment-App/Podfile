@@ -9,6 +9,7 @@ target 'IOS-Investment-App' do
   pod 'lottie-ios', '~> 3.1.8'
   pod 'Alamofire', :git => 'https://github.com/Alamofire/Alamofire.git', :branch => 'alamofire5'
   pod 'Charts'
+  pod 'SDWebImage', '~> 5.0'
   # Pods for IOS-Investment-App
 
 end

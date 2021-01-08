@@ -36,7 +36,6 @@ protocol MarketsPresenterInterface: PresenterInterface {
     func fetchCryptos()
     func didTapBuyCoin(withIdentifier id: String)
     func didTapSellCoin(withIdentifier id: String)
-    func getCryptoIcon(coinSymbol: String) -> UIImage?
 
     //Output
     func didFetchBoughtCoins(coins: [CoinBoughtEntity])
@@ -45,7 +44,6 @@ protocol MarketsPresenterInterface: PresenterInterface {
 
 protocol MarketsInteractorInterface: InteractorInterface {
     
-    func getCryptoIcon(coinSymbol: String) -> UIImage?
     func fetchBoughtCoins(storeCoins: @escaping (_ coins: [CoinBoughtEntity]) -> Void)
     func fetchCryptos(storeCoins: @escaping (_ coins: [CoinEntity]) -> Void, maxRange: Int)
     

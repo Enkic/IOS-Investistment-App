@@ -9,6 +9,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 final class MarketsViewController: UIViewController {
 
@@ -20,6 +21,8 @@ final class MarketsViewController: UIViewController {
     
     var coins: [CoinEntity] = []
     var boughtCoins: [CoinBoughtEntity] = []
+    
+    let iconApi = IconAPI()
     
     var loadingViewBuy: LoadingView?
     var loadingViewSell: LoadingView?
@@ -133,7 +136,7 @@ extension MarketsViewController: UITableViewDelegate, UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: "MarketBuyCell", for: indexPath) as! MarketsBuyTableViewCell
             let coinSymbol = coins[indexPath.row].symbol
             
-            cell.cryptoIcon.image = presenter.getCryptoIcon(coinSymbol: coinSymbol)
+            cell.cryptoIcon.sd_setImage(with: iconApi.getUrlIcon(for: coinSymbol), completed: nil)
             cell.cryptoName.text = coinSymbol
             cell.cryptoValue.text = String.formatToDollar(price: coins[indexPath.row].usdPrice)
             cell.coinId = coins[indexPath.row].id
@@ -143,9 +146,9 @@ extension MarketsViewController: UITableViewDelegate, UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: "MarketSellCell", for: indexPath) as! MarketsSellTableViewCell
             let coinSymbol = boughtCoins[indexPath.row].symbol ?? "NaN"
             
-            cell.coinImage.image = presenter.getCryptoIcon(coinSymbol: coinSymbol)
+            cell.coinImage.sd_setImage(with: iconApi.getUrlIcon(for: coinSymbol), completed: nil)
             cell.coinNameLabel.text = boughtCoins[indexPath.row].symbol
-            cell.coinProfitsAmountLabel.text = String.formatToDollar(price: boughtCoins[indexPath.row].profits ?? 0)
+            cell.coinProfitsAmountLabel.text = "+ " + String.formatToDollar(price: boughtCoins[indexPath.row].profits ?? 0)
 
             if (boughtCoins[indexPath.row].profits ?? 0) <= -0.1 {
                 cell.coinProfitsAmountLabel.textColor = .systemRed

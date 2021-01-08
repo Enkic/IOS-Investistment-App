@@ -26,7 +26,6 @@ protocol PortfolioPresenterInterface: PresenterInterface {
     func getMoneyWallet() -> String
     func getBoughtCoinsInfos()
     func getTransactions()
-    func getCryptoIcon(coinSymbol: String) -> UIImage?
 
     //Ouput
     func didGetBoughtCoinsInfos(coins: [CoinBoughtEntity])
@@ -35,7 +34,6 @@ protocol PortfolioPresenterInterface: PresenterInterface {
 }
 
 protocol PortfolioInteractorInterface: InteractorInterface {
-    func getCryptoIcon(coinSymbol: String) -> UIImage?
     func storeMoneyWallet(add amount: Int)
     func getMoneyWallet() -> Int
     func getBoughtCoinsInfosFromApi(storeCoins: @escaping (_ coins: [CoinBoughtEntity]) -> Void)
